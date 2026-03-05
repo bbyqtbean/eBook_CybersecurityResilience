@@ -709,6 +709,9 @@ body {
   padding: 2rem;
   position: relative;
   transition: all 0.3s var(--ease-smooth);
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
 }
 
 .card-inner:hover {

@@ -2,16 +2,16 @@
    Service Worker — Offline Caching
    ============================================ */
 
-const CACHE_NAME = 'deep-dive-v9';
+const CACHE_NAME = 'deep-dive-v10';
 const ASSETS = [
-    '/',
-    '/index.html',
-    '/css/style.css',
-    '/js/content.js',
-    '/js/bookmarks.js',
-    '/js/audio.js',
-    '/js/app.js',
-    '/manifest.json'
+    './',
+    './index.html',
+    './css/style.css',
+    './js/content.js',
+    './js/bookmarks.js',
+    './js/audio.js',
+    './js/app.js',
+    './manifest.json'
 ];
 
 // Install: cache core assets

@@ -220,10 +220,7 @@
         let selectedSlideNum = null;
 
         // Show toolbar near selected text
-        document.addEventListener('mouseup', (e) => {
-            // Ignore if inside popups or toolbar
-            if (e.target.closest('.bookmark-popup, .question-popup, .selection-toolbar')) return;
-
+        function handleTextSelection() {
             setTimeout(() => {
                 const sel = window.getSelection();
                 const text = sel?.toString().trim();
@@ -244,7 +241,7 @@
                 selectedText = text;
                 selectedSlideNum = parseInt(card.dataset.slide);
 
-                // Position toolbar near cursor
+                // Position toolbar near selection
                 const range = sel.getRangeAt(0);
                 const rect = range.getBoundingClientRect();
                 toolbar.style.top = Math.max(10, rect.top - 50) + 'px';
@@ -254,14 +251,31 @@
                 ) + 'px';
                 toolbar.classList.add('visible');
             }, 10);
+        }
+
+        document.addEventListener('mouseup', (e) => {
+            if (e.target.closest('.bookmark-popup, .question-popup, .selection-toolbar')) return;
+            handleTextSelection();
         });
 
-        // Hide toolbar on scroll or click elsewhere
+        // Mobile touch support — selectionchange fires when text is selected via long-press
+        let selectionTimer = null;
+        document.addEventListener('selectionchange', () => {
+            clearTimeout(selectionTimer);
+            selectionTimer = setTimeout(handleTextSelection, 300);
+        });
+
+        // Hide toolbar on scroll or click/tap elsewhere
         document.addEventListener('mousedown', (e) => {
             if (!e.target.closest('.selection-toolbar')) {
                 toolbar.classList.remove('visible');
             }
         });
+        document.addEventListener('touchstart', (e) => {
+            if (!e.target.closest('.selection-toolbar')) {
+                toolbar.classList.remove('visible');
+            }
+        }, { passive: true });
 
         // "Ask a Question" button click
         document.getElementById('selection-add-question').addEventListener('click', () => {

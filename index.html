@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Dive: Cybersecurity &amp; Resilience</title>
+  <meta name="description"
+    content="An interactive learning experience on cybersecurity and resilience for senior leadership. Dive deep into preventable threats, risk management, and strategic mindset shifts.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0a1628">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <header id="top-bar">
+    <div class="top-bar-left">
+      <span class="depth-label" id="depth-label-btn" role="button" tabindex="0" aria-label="Open section menu">Depth:
+        <span id="depth-display">0m (Introduction)</span> <span class="depth-caret">▼</span></span>
+      <nav id="section-menu" class="section-menu" aria-hidden="true">
+        <a href="#slide-1" data-zone="surface">🏖️ 0m — Introduction</a>
+        <a href="#slide-11" data-zone="shallows">🐠 10m — Preventable Threats</a>
+        <a href="#slide-21" data-zone="reef">🐙 30m — Largely Preventable</a>
+        <a href="#slide-30" data-zone="twilight">🌊 60m — Difficult to Prevent</a>
+        <a href="#slide-41" data-zone="abyss">🐋 100m — Mindset Shifts</a>
+      </nav>
+    </div>
+    <div class="top-bar-center">
+      <button id="audio-mode-toggle" class="audio-toggle" aria-label="Toggle audio mode">
+        <span class="audio-icon">🔇</span>
+        <span class="audio-label">Audio Mode Off</span>
+      </button>
+    </div>
+    <div class="top-bar-right">
+      <button id="question-drawer-toggle" class="bookmark-btn" aria-label="View questions" title="Your questions">
+        <span class="star-icon">💬</span>
+        <span id="question-count" class="bookmark-count">0</span>
+      </button>
+      <button id="bookmark-drawer-toggle" class="bookmark-btn" aria-label="View bookmarks">
+        <span class="star-icon">⭐</span>
+        <span id="bookmark-count" class="bookmark-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Depth Gauge -->
+  <div id="depth-gauge">
+    <div class="gauge-track">
+      <div id="gauge-fill" class="gauge-fill"></div>
+      <div id="gauge-diver" class="gauge-diver">🤿</div>
+    </div>
+    <div class="gauge-markers">
+      <span data-depth="0m">0m</span>
+      <span data-depth="10m">10m</span>
+      <span data-depth="30m">30m</span>
+      <span data-depth="60m">60m</span>
+      <span data-depth="100m">100m</span>
+      <span data-depth="seabed">🏝️</span>
+    </div>
+  </div>
+
+  <!-- Bookmark Drawer -->
+  <aside id="bookmark-drawer" class="bookmark-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Your Bookmarks</h2>
+      <button id="drawer-close" class="drawer-close" aria-label="Close bookmarks">&times;</button>
+    </div>
+    <div id="bookmark-list" class="bookmark-list">
+      <p class="empty-state">No bookmarks yet. Click or tap anywhere to add one.</p>
+    </div>
+  </aside>
+
+  <!-- Questions Drawer -->
+  <aside id="question-drawer" class="bookmark-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Your Questions</h2>
+      <button id="question-drawer-close" class="drawer-close" aria-label="Close questions">&times;</button>
+    </div>
+    <p style="padding:0 1.5rem;color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:0.5rem;">These will be sent to
+      your trainer on completion.</p>
+    <div id="question-drawer-list" class="bookmark-list">
+      <p class="empty-state">No questions yet. Select text while reading to ask a question.</p>
+    </div>
+  </aside>
+
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+
+  <!-- Bubbles Background -->
+  <div id="bubbles-container" class="bubbles-container" aria-hidden="true"></div>
+
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- ============ SURFACE: Introduction (Slides 1-10) ============ -->
+    <section class="depth-zone zone-surface" data-zone="surface" data-depth="0" id="section-introduction">
+      <div class="zone-header">
+        <div class="zone-label">Surface · 0m</div>
+        <h1 class="zone-title">Cybersecurity &amp; Resilience</h1>
+        <p class="zone-subtitle">1h Reading</p>
+        <div class="diver-illustration">🤿</div>
+        <div class="scroll-hint">
+          <span>Scroll down to begin your dive</span>
+          <div class="scroll-arrow">↓</div>
+        </div>
+      </div>
+
+      <div class="onboarding-card">
+        <div class="onboarding-inner">
+          <h2>📖 How to Use This eLearning</h2>
+          <div class="onboarding-tips">
+            <div class="onboarding-tip">
+              <div class="tip-icon">⭐</div>
+              <div class="tip-title">Bookmark Sections</div>
+              <div class="tip-desc">Tap or click anywhere on a card to add a bookmark with a note. Use bookmarks as page
+                anchors to revisit later.</div>
+            </div>
+            <div class="onboarding-tip">
+              <div class="tip-icon">💬</div>
+              <div class="tip-title">Ask Questions</div>
+              <div class="tip-desc">Select any text to ask a question. Your questions will be collated and sent to your
+                Trainer when you mark this eLearning as complete.</div>
+            </div>
+            <div class="onboarding-tip">
+              <div class="tip-icon">🔊</div>
+              <div class="tip-title">Audio Mode</div>
+              <div class="tip-desc">Toggle Audio Mode at the top to have the content read aloud as you scroll through
+                each section.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article class="content-card" data-slide="1" id="slide-1">
+        <div class="card-inner">
+          <h3 class="theme-heading">Cybersecurity and resiliency aren't just about compliance</h3>
+          <h2>Welcome</h2>
+          <p>Today we're going to talk about something that is really critical for all of us in leadership positions –
+            understanding that cybersecurity and resiliency isn't just about ticking boxes on a compliance checklist.
+            It's about making smart, strategic decisions that actually protect our organizations.</p>
+          <button class="play-btn" data-slide="1" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="2" id="slide-2">
+        <div class="card-inner">
+          <img src="images/slide-02.png?v=2" alt="Slide 2" class="slide-image" loading="lazy">
+          <h2>Cybersecurity Hierarchy</h2>
+          <p>Cybersecurity (and Resiliency) is fundamentally about managing and accepting risks. Accountability is
+            layered across leadership. At the top, accountability is broad and strategic. It sits with political and
+            senior leadership for public trust and overall posture. As we move down the organizational hierarchy,
+            responsibility becomes more specific.</p>
+          <ul>
+            <li>At the Director-level (business owners): responsible for the risks and outcomes of their
+              digital systems and supporting operations.</li>
+          </ul>
+          <button class="play-btn" data-slide="2" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="3" id="slide-3">
+        <div class="card-inner">
+          <!-- CIA Triad SVG Diagram -->
+          <svg viewBox="0 0 520 460" xmlns="http://www.w3.org/2000/svg"
+            style="width:100%;max-width:520px;margin:1rem auto;display:block;" aria-label="CIA Triad Triangle Diagram">
+            <defs>
+              <style>
+                .cia-label {
+                  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+                  fill: white;
+                  font-weight: 700;
+                  font-size: 17px;
+                  letter-spacing: 2px;
+                }
+
+                .cia-outer {
+                  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+                  fill: #555;
+                  font-size: 15px;
+                  font-style: italic;
+                }
+              </style>
+            </defs>
+            <!-- Equilateral triangle: Top(260,40), BL(75,360), BR(445,360) -->
+            <!-- Centroid: (260, 253) -->
+            <!-- Left section (Integrity) - Light Blue -->
+            <polygon points="260,40 260,253 75,360" fill="#6AA5D7" stroke="white" stroke-width="2"
+              stroke-linejoin="round" />
+            <!-- Right section (Availability) - Medium Blue -->
+            <polygon points="260,40 260,253 445,360" fill="#4A86C1" stroke="white" stroke-width="2"
+              stroke-linejoin="round" />
+            <!-- Bottom section (Confidentiality) - Dark Blue -->
+            <polygon points="75,360 260,253 445,360" fill="#1B2B50" stroke="white" stroke-width="2"
+              stroke-linejoin="round" />
+            <!-- INTEGRITY label (angled 60° along left slope) -->
+            <text transform="translate(188,218) rotate(-60)" class="cia-label" text-anchor="middle">INTEGRITY</text>
+            <!-- AVAILABILITY label (angled -60° along right slope) -->
+            <text transform="translate(332,218) rotate(60)" class="cia-label" text-anchor="middle">AVAILABILITY</text>
+            <!-- CONFIDENTIALITY label (horizontal) -->
+            <text x="260" y="338" class="cia-label" text-anchor="middle" font-size="16"
+              letter-spacing="1">CONFIDENTIALITY</text>
+            <!-- Outer annotations -->
+            <text x="110" y="210" class="cia-outer" text-anchor="end">Trustworthiness</text>
+            <text x="440" y="210" class="cia-outer" text-anchor="start">Resilience</text>
+            <text x="260" y="420" class="cia-outer" text-anchor="middle">Privacy</text>
+          </svg>
+          <h2>The CIA Triad</h2>
+          <p>While responsibility is structured hierarchically across the Government, cybersecurity decision making
+            primarily revolves around three areas: Confidentiality, Integrity and Availability, also known as the CIA
+            Triad.</p>
+          <ul>
+            <li><strong>Confidentiality</strong> means keeping sensitive information private – only authorized people
+              should access it.</li>
+            <li><strong>Integrity</strong> means ensuring that data hasn't been tampered with – what you see is accurate
+              and trustworthy.</li>
+            <li><strong>Availability</strong> means systems and data are accessible when you need them – they are
+              resilient to downtime.</li>
+          </ul>
+          <button class="play-btn" data-slide="3" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="4" id="slide-4">
+        <div class="card-inner">
+          <img src="images/slide-04.png?v=2" alt="Slide 4" class="slide-image" loading="lazy">
+          <h2>Resilience Goes Beyond Cybersecurity</h2>
+          <p>We cannot prevent all disruptions, and there is a high cost to ensuring highly available systems.
+            Resiliency goes beyond implementing cybersecurity controls. The focus is to ensure services can continue
+            even when things go wrong. It includes business continuity planning, disaster recovery, and building systems
+            that can recover quickly from disruptions.</p>
+          <p class="highlight-quote">Think of it this way: cybersecurity keeps the bad guys out, but resilience ensures
+            you can keep operating as an organisation even if they get in.</p>
+          <button class="play-btn" data-slide="4" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="5" id="slide-5">
+        <div class="card-inner">
+          <img src="images/slide-05.png?v=2" alt="Slide 5" class="slide-image" loading="lazy">
+          <h2>Global Cybersecurity Investment</h2>
+          <p>The numbers tell an interesting story. Global spending on cybersecurity products and services have been on
+            an uptrend. But here's the question we need to ask: <strong>is all that spending actually making us more
+              secure?</strong> Or are we just buying more tools without fundamentally changing our approach?</p>
+          <button class="play-btn" data-slide="5" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="6" id="slide-6">
+        <div class="card-inner">
+          <img src="images/slide-06.png?v=2" alt="Slide 6" class="slide-image" loading="lazy">
+          <h2>Rising Threat Landscape</h2>
+          <p>Unfortunately, even with all that spending, breaches are growing exponentially.</p>
+          <button class="play-btn" data-slide="6" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="7" id="slide-7">
+        <div class="card-inner">
+          <img src="images/slide-07.png?v=2" alt="Slide 7" class="slide-image" loading="lazy">
+          <h2>Adversaries Are Evolving</h2>
+          <p>The adversaries are getting better, more organized, and more brazen. They have access to increasingly
+            sophisticated tools and technologies, including AI and automation, that make attacks more efficient and
+            scalable. We are up against well-funded, highly skilled professionals.</p>
+          <button class="play-btn" data-slide="7" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="8" id="slide-8">
+        <div class="card-inner">
+          <img src="images/slide-08.png?v=2" alt="Slide 8" class="slide-image" loading="lazy">
+          <h2>Singapore: A Prime Target</h2>
+          <p>Singapore is particularly attractive to cybercriminals. Why? Because we're a wealthy nation with advanced
+            digital infrastructure, we're a major financial hub, and we have significant intellectual property across
+            various sectors.</p>
+          <button class="play-btn" data-slide="8" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="9" id="slide-9">
+        <div class="card-inner">
+          <img src="images/slide-09.png?v=2" alt="Slide 9" class="slide-image" loading="lazy">
+          <h2>Singapore Resiliency Disruption Timeline</h2>
+          <p>While threat actors have been actively targeting Singapore and our Government, we must also recognise that
+            many service disruptions stem from internal factors like human errors, misconfigurations, and inadequate
+            planning. These are some notable service disruptions in the past 2 years that were not caused by
+            cybersecurity incidents, but such disruptions still have significant impact on our citizens.</p>
+          <button class="play-btn" data-slide="9" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="10" id="slide-10">
+        <div class="card-inner">
+          <img src="images/slide-10.png?v=2" alt="Slide 10" class="slide-image" loading="lazy">
+          <h2>Framework for Today's Discussion</h2>
+          <p>Here's how we're going to structure our discussion. We'll categorize cyber threats into three buckets:
+            <strong>Preventable</strong>, <strong>Largely Preventable</strong>, and <strong>Difficult to
+              Prevent</strong>. For each category, we'll look at examples, understand what went wrong, and discuss what
+            we can do about it. Then we'll talk about three critical mindset shifts.
+          </p>
+          <p>By the end, you should have a practical framework for thinking about cybersecurity that goes beyond
+            compliance checklists.</p>
+          <button class="play-btn" data-slide="10" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <div class="zone-transition">
+        <div class="fish-group">🐠 🐟 🐠</div>
+        <p class="transition-text">Descending to the Shallows...</p>
+      </div>
+    </section>
+
+    <!-- ============ SHALLOWS: Preventable Threats (Slides 11-20) ============ -->
+    <section class="depth-zone zone-shallows" data-zone="shallows" data-depth="10" id="section-preventable">
+      <div class="zone-header">
+        <div class="zone-label">Shallows · 10m</div>
+        <h1 class="zone-title">Chapter 1: Preventable Threats</h1>
+        <p class="zone-subtitle">Basic Hygiene &amp; DDoS Protection</p>
+      </div>
+
+      <article class="content-card" data-slide="11" id="slide-11">
+        <div class="card-inner">
+          <h2>Preventable: Basic Hygiene</h2>
+          <p>Many cyber incidents are preventable with basic security hygiene. This includes DDoS attacks and
+            disruptions caused by inadequate planning and misconfiguration.</p>
+          <p>The key word here is <strong>"preventable."</strong> These threats can be effectively mitigated with
+            existing tools, proper planning, and good system design. We know how to stop them — we just need to actually
+            do it.</p>
+          <button class="play-btn" data-slide="11" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="12" id="slide-12">
+        <div class="card-inner">
+          <img src="images/slide-12.png?v=2" alt="Slide 12" class="slide-image" loading="lazy">
+          <h2>DDoS: When Servers Are Overwhelmed</h2>
+          <p>Think about your server — which is just a computer — as having a finite capacity to handle requests. Under
+            normal circumstances, a server can handle a few thousand users at a time.</p>
+          <p>But when millions of requests hit simultaneously, the server simply cannot keep up. It slows down
+            dramatically or crashes entirely. That's a DDoS attack — an attacker sends an overwhelming number of
+            requests, and your services become unavailable.</p>
+          <button class="play-btn" data-slide="12" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="13" id="slide-13">
+        <div class="card-inner">
+          <img src="images/slide-13.png?v=2" alt="Slide 13" class="slide-image" loading="lazy">
+          <h2>Network Layer DDoS: Connection Floods</h2>
+          <p>Attackers use <strong>botnets</strong> — networks of compromised computers and devices — to flood your
+            servers with network connections. When your network resources are exhausted, your servers go down.</p>
+          <p>Legitimate users can't get through because the botnet has consumed all available connection capacity. This
+            is a classic network layer attack.</p>
+          <button class="play-btn" data-slide="13" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="14" id="slide-14">
+        <div class="card-inner">
+          <img src="images/slide-14.png?v=2" alt="Slide 14" class="slide-image" loading="lazy">
+          <h2>Application Layer DDoS: Transactions</h2>
+          <p>Attackers can also use botnets to flood servers with <strong>transactions</strong> — this is an application
+            layer attack. Instead of just opening connections, attackers make the server do work: requesting web pages,
+            submitting forms, running database queries.</p>
+          <p>The goal is to exhaust your application resources — CPU, memory, database connections. This can be even
+            more effective than network layer attacks because application-level processing requires more resources.</p>
+          <button class="play-btn" data-slide="14" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="15" id="slide-15">
+        <div class="card-inner">
+          <img src="images/slide-15.png?v=2" alt="Slide 15" class="slide-image" loading="lazy">
+          <h2>DDoS-as-a-Service</h2>
+          <p>DDoS attacks are becoming increasingly easy to execute because of tools and services like
+            <strong>"DDoS-as-a-Service"</strong>. Some plans are as cheap as 5 euros per month for a basic service. The
+            barrier to entry for attackers is remarkably low.
+          </p>
+          <button class="play-btn" data-slide="15" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="16" id="slide-16">
+        <div class="card-inner">
+          <h2>Beyond DDoS: Human Factors</h2>
+          <p>DDoS isn't the only type of preventable disruption. Disruptions can also be caused by non-cyber related
+            reasons: inadequate planning, misconfigurations, and human errors.</p>
+          <div class="sharepoint-card">
+            <span class="lock-icon">🔒</span>
+            <div class="sharepoint-text">
+              <strong>Internal Case Study</strong>
+              <p>This section includes a corporate case study hosted on your organisation's SharePoint.</p>
+            </div>
+            <a href="#" class="sharepoint-link" target="_blank" rel="noopener">Open Case Study →</a>
+          </div>
+          <button class="play-btn" data-slide="16" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="17" id="slide-17">
+        <div class="card-inner">
+          <h2>What Can We Do?</h2>
+          <p>The natural question is: what can we do about all of this? There is actually no need for complicated or
+            expensive solutions.</p>
+          <button class="play-btn" data-slide="17" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="18" id="slide-18">
+        <div class="card-inner">
+          <img src="images/slide-18.png?v=2" alt="Slide 18" class="slide-image" loading="lazy">
+          <h2>Recommendation #1: DDoS Protection Services</h2>
+          <p>For DDoS attacks, the solution is straightforward: <strong>DDoS Protection Services</strong>. They're
+            low-cost and very effective against network layer attacks.</p>
+          <p>The service sits between the attackers and your servers. When attack traffic comes in, it filters and
+            blocks malicious traffic, only allowing legitimate traffic through. These are typically bundled with Content
+            Delivery Networks (CDNs) like Cloudflare and Akamai.</p>
+          <p>You get two benefits: <strong>faster content delivery</strong> for your users AND <strong>protection
+              against DDoS attacks</strong>.</p>
+          <button class="play-btn" data-slide="18" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="19" id="slide-19">
+        <div class="card-inner">
+          <img src="images/slide-19.png?v=2" alt="Slide 19" class="slide-image" loading="lazy">
+          <h2>Recommendation #2: Firewalls</h2>
+          <p>Firewalls are also low-cost and very effective. Positioned right in front of your servers, they provide
+            added protection in case a legitimate-looking request bypasses the DDoS protection service. Firewalls today
+            are quite necessary and not optional add-ons.</p>
+          <button class="play-btn" data-slide="19" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card takeaway-card" data-slide="20" id="slide-20">
+        <div class="card-inner">
+          <h2>Takeaway #1</h2>
+          <p class="takeaway-text">DDoS and most disruptions are preventable!</p>
+          <ul>
+            <li><strong>Use DDoS Protection Services</strong> for public-facing systems.</li>
+            <li><strong>Plan for disruption</strong>, test for assurance, and implement processes to avoid human errors.
+            </li>
+          </ul>
+          <button class="play-btn" data-slide="20" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <div class="zone-transition">
+        <div class="fish-group">🐢 🐟 🦑</div>
+        <p class="transition-text">Descending to the Reef Zone...</p>
+      </div>
+    </section>
+
+    <!-- ============ REEF ZONE: Largely Preventable (Slides 21-29) ============ -->
+    <section class="depth-zone zone-reef" data-zone="reef" data-depth="30" id="section-largely-preventable">
+      <div class="zone-header">
+        <div class="zone-label">Reef Zone · 30m</div>
+        <h1 class="zone-title">Chapter 2: Largely Preventable</h1>
+        <p class="zone-subtitle">Cybercriminals, Ransomware &amp; Vendor Risk</p>
+      </div>
+
+      <article class="content-card" data-slide="21" id="slide-21">
+        <div class="card-inner">
+          <h2>Largely Preventable Threats</h2>
+          <p>Now we move into the gray zone: largely preventable threats. These are more sophisticated than basic
+            hygiene failures, but they're still preventable with reasonable effort and investment.</p>
+          <button class="play-btn" data-slide="21" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="22" id="slide-22">
+        <div class="card-inner">
+          <img src="images/slide-22.png?v=2" alt="Slide 22" class="slide-image" loading="lazy">
+          <h2>Lower-tier APTs: Cybercriminals</h2>
+          <p>One level up from hacktivists and script kiddies, we have lower-tier APTs — cybercriminals. They're more
+            methodical, typically financially motivated, and their most common approach is to deploy
+            <strong>ransomware</strong> on vulnerable systems and extort money from victims.
+          </p>
+          <p>While these attacks are more sophisticated than basic threats, they remain <strong>largely
+              preventable</strong>.</p>
+          <button class="play-btn" data-slide="22" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="23" id="slide-23">
+        <div class="card-inner">
+          <h2>Ransomware Case Study</h2>
+          <div class="sharepoint-card">
+            <span class="lock-icon">🔒</span>
+            <div class="sharepoint-text">
+              <strong>Internal Case Study</strong>
+              <p>This section includes a corporate case study hosted on your organisation's SharePoint.</p>
+            </div>
+            <a href="#" class="sharepoint-link" target="_blank" rel="noopener">Open Case Study →</a>
+          </div>
+          <button class="play-btn" data-slide="23" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="24" id="slide-24">
+        <div class="card-inner">
+          <h2>Complex Systems Can Cause Disruptions</h2>
+          <p>Disruptions can happen when a system is overly complex. Some dependencies may be completely unknown, even
+            to those managing them, making it possible for unexpected failures to occur.</p>
+          <div class="sharepoint-card">
+            <span class="lock-icon">🔒</span>
+            <div class="sharepoint-text">
+              <strong>Internal Case Study</strong>
+              <p>This section includes a corporate case study hosted on your organisation's SharePoint.</p>
+            </div>
+            <a href="#" class="sharepoint-link" target="_blank" rel="noopener">Open Case Study →</a>
+          </div>
+          <button class="play-btn" data-slide="24" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="25" id="slide-25">
+        <div class="card-inner">
+          <h2>What Can We Do?</h2>
+          <p>What can we do about largely preventable cyber disruptions?</p>
+          <button class="play-btn" data-slide="25" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="26" id="slide-26">
+        <div class="card-inner">
+          <img src="images/slide-26.png?v=2" alt="Slide 26" class="slide-image" loading="lazy">
+          <h2>Recommendation #1: Be Aware of Vendor Risk</h2>
+          <p>When outsourcing, you need to be acutely aware of your exposure. Just because you've outsourced doesn't
+            mean you've outsourced the accountability or risk. When your vendor gets hacked, <strong>your data gets
+              compromised, your customers are affected, your reputation takes the hit</strong>.</p>
+          <ul>
+            <li><strong>Develop risk management plans</strong> for when vendors get hacked. What data do they access?
+              What services do they provide? What if they went down for a week?</li>
+            <li><strong>Impose requirements on vendors</strong> — annual VAPT, security certifications, incident
+              notification timelines. Build these into contracts from day one.</li>
+          </ul>
+          <button class="play-btn" data-slide="26" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="27" id="slide-27">
+        <div class="card-inner">
+          <img src="images/slide-27.png?v=2" alt="Slide 27" class="slide-image" loading="lazy">
+          <h2>Recommendation #2: Compliance → Outcomes</h2>
+          <p>Many teams approach cybersecurity like a checklist. <em>Did we implement encryption? Check. Did we enable
+              logging? Check.</em> This is the compliance-based mindset — you're verifying that baseline requirements
+            have been implemented.</p>
+          <p>But it doesn't tell you if you're actually secure. The <strong>outcome-based mindset</strong> uses Secure
+            Architecting and VAPT to prevent design flaws and discover vulnerabilities specific to your implementation.
+          </p>
+          <ul>
+            <li><strong>Secure Architecting</strong> — Think like an attacker when designing. Where are the weak points?
+              What assumptions might be wrong?</li>
+            <li><strong>VAPT</strong> — Actively try to break into your own systems before the bad guys do.</li>
+          </ul>
+          <button class="play-btn" data-slide="27" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="28" id="slide-28">
+        <div class="card-inner">
+          <img src="images/slide-28.png?v=2" alt="Slide 28" class="slide-image" loading="lazy">
+          <h2>Recommendation #3: Business Continuity Planning</h2>
+          <p>Plan for continuity and quick recovery for <strong>when</strong> things go wrong. Notice: "when," not "if."
+          </p>
+          <p>Officials were able to pivot to manual processing using hardcopy registers during election polling. When
+            immigration clearance systems went down, staff used iPads as a low-tech alternative. These are examples of
+            <strong>non-digital fallback plans</strong> — just as good as digital alternatives for resilience.
+          </p>
+          <p class="highlight-quote">Ask yourself: What are your essential services? What would happen if main systems
+            went down? Do you have manual processes to fall back on?</p>
+          <button class="play-btn" data-slide="28" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card takeaway-card" data-slide="29" id="slide-29">
+        <div class="card-inner">
+          <h2>Takeaway #2</h2>
+          <p class="takeaway-text">Cyber hygiene issues and complex systems are largely preventable.</p>
+          <ul>
+            <li>Be conscious about <strong>vendor risk exposure</strong>.</li>
+            <li>Conduct <strong>VAPT</strong> — test that your system cannot break, don't just tick checkboxes.</li>
+            <li>Design systems to be <strong>simple</strong> for better security and resiliency.</li>
+            <li><strong>Plan for disruptions</strong> — have manual fallback procedures and test them regularly.</li>
+          </ul>
+          <button class="play-btn" data-slide="29" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <div class="zone-transition">
+        <div class="fish-group">🦈 🐙 🪼</div>
+        <p class="transition-text">Descending to the Twilight Zone...</p>
+      </div>
+    </section>
+
+    <!-- ============ TWILIGHT ZONE: Difficult to Prevent (Slides 30-40) ============ -->
+    <section class="depth-zone zone-twilight" data-zone="twilight" data-depth="60" id="section-difficult">
+      <div class="zone-header">
+        <div class="zone-label">Twilight Zone · 60m</div>
+        <h1 class="zone-title">Chapter 3: Difficult to Prevent</h1>
+        <p class="zone-subtitle">Advanced Persistent Threats &amp; Zero-Days</p>
+      </div>
+
+      <article class="content-card" data-slide="30" id="slide-30">
+        <div class="card-inner">
+          <h2>Difficult to Prevent</h2>
+          <p>Now we come to the third and last category: difficult to prevent threats.</p>
+          <button class="play-btn" data-slide="30" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="31" id="slide-31">
+        <div class="card-inner">
+          <img src="images/slide-31.png?v=2" alt="Slide 31" class="slide-image" loading="lazy">
+          <h2>Advanced Persistent Threats</h2>
+          <p>APTs are typically nation-state actors or highly sophisticated criminal groups. They're called 'persistent'
+            because they don't give up easily — sometimes spending months or years inside a network before achieving
+            their objectives.</p>
+          <p>These groups have access to <strong>zero-day vulnerabilities</strong> that software vendors don't know
+            about yet. They use sophisticated social engineering and have resources to develop custom malware. You're
+            not just fighting a hacker — <strong>you're fighting an intelligence agency</strong>.</p>
+          <button class="play-btn" data-slide="31" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="32" id="slide-32">
+        <div class="card-inner">
+          <img src="images/slide-32.png?v=2" alt="Slide 32" class="slide-image" loading="lazy">
+          <h2>Even Mature Organisations Fall Victim</h2>
+          <p>Organizations with mature security programs can fall victim to APT attacks. Microsoft is an example of a
+            highly sophisticated organisation that was successfully targeted.</p>
+          <button class="play-btn" data-slide="32" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="33" id="slide-33">
+        <div class="card-inner">
+          <img src="images/slide-33.png?v=2" alt="Slide 33" class="slide-image" loading="lazy">
+          <h2>APT Storm-0558 (Antique Typhoon)</h2>
+          <p>Antique Typhoon is a China-based threat actor. The objective of most of this group's campaigns is to obtain
+            unauthorized access to email accounts for harvesting information and phishing. They targeted Microsoft
+            directly.</p>
+          <button class="play-btn" data-slide="33" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="34" id="slide-34">
+        <div class="card-inner">
+          <img src="images/slide-34.png?v=2" alt="Slide 34" class="slide-image" loading="lazy">
+          <h2>What Are Zero-Day Exploits?</h2>
+          <p>Zero-day exploits are vulnerabilities unknown to the software vendor — meaning there's no patch available.
+            How do you defend against something that no one knows exists?</p>
+          <p>This is where <strong>defense-in-depth</strong> becomes critical. Even if an attacker exploits a zero-day
+            for initial access, you want multiple layers of defense: network segmentation, application whitelisting,
+            behavior-based detection — these controls help even when signature-based defenses fail.</p>
+          <button class="play-btn" data-slide="34" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="35" id="slide-35">
+        <div class="card-inner">
+          <img src="images/slide-35.png?v=2" alt="Slide 35" class="slide-image" loading="lazy">
+          <h2>APTs Are ROI-Sensitive</h2>
+          <p>Purchasing powerful exploits is extremely expensive. So APTs only pursue targets that are worth their
+            resources. This means they are strategic and selective in their targeting.</p>
+          <button class="play-btn" data-slide="35" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="36" id="slide-36">
+        <div class="card-inner">
+          <img src="images/slide-36.png?v=2" alt="Slide 36" class="slide-image" loading="lazy">
+          <h2>What APTs Target</h2>
+          <p>APTs usually want two things:</p>
+          <ul>
+            <li><strong>Secrets</strong> related to defense or security</li>
+            <li><strong>Disruptions</strong> by taking over critical infrastructure</li>
+          </ul>
+          <button class="play-btn" data-slide="36" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="37" id="slide-37">
+        <div class="card-inner">
+          <h2>What Can We Do?</h2>
+          <p>What can we do about APTs?</p>
+          <button class="play-btn" data-slide="37" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="38" id="slide-38">
+        <div class="card-inner">
+          <img src="images/slide-38.png?v=2" alt="Slide 38" class="slide-image" loading="lazy">
+          <h2>Recommendation: Air-Gap What Is Truly Secret</h2>
+          <p>Decide what information is truly secret. Traditionally, organizations with sensitive data use
+            <strong>air-gapped networks</strong> — physically isolated from the internet.
+          </p>
+          <p>However, even air-gapped networks can be breached. The <strong>Stuxnet</strong> attack on Iranian nuclear
+            facilities proved this in 2010 — attackers used a USB drive to bridge the air gap. More recently in 2024,
+            <strong>GoldenJackal</strong> used custom tools to target an air-gapped embassy in Belarus.
+          </p>
+          <p>Air-gapping provides protection but isn't foolproof. You still need physical security, strict controls on
+            removable media, and monitoring within the air-gapped environment.</p>
+          <button class="play-btn" data-slide="38" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="39" id="slide-39">
+        <div class="card-inner">
+          <img src="images/slide-39.png?v=2" alt="Slide 39" class="slide-image" loading="lazy">
+          <h2>Some Disruptions Are Beyond Our Control</h2>
+          <p>Examples include Microsoft's data center outage and CrowdStrike's buggy update causing global disruption.
+            Even the most prepared organisations can face external failures.</p>
+          <button class="play-btn" data-slide="39" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card takeaway-card" data-slide="40" id="slide-40">
+        <div class="card-inner">
+          <h2>Takeaway #3</h2>
+          <p class="takeaway-text">APT attacks and outage of cloud services are very difficult to prevent.</p>
+          <ul>
+            <li>For secrets, use of <strong>air-gapped networks can reduce our exposure</strong> to an external
+              attacker.</li>
+            <li>But air-gapped environments are also <strong>very costly and low in accessibility</strong>, so there is
+              a need to be judicious over the use of such networks.</li>
+            <li>Critical systems need well-planned and rehearsed <strong>non-digital Business Continuity Plans
+                (BCPs)</strong>.</li>
+          </ul>
+          <button class="play-btn" data-slide="40" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <div class="zone-transition">
+        <div class="fish-group">🐡 🦑 🪸</div>
+        <p class="transition-text">Descending to the Abyss...</p>
+      </div>
+    </section>
+
+    <!-- ============ ABYSS: Mindset Shifts (Slides 41-59) ============ -->
+    <section class="depth-zone zone-abyss" data-zone="abyss" data-depth="100" id="section-mindset">
+      <div class="zone-header">
+        <div class="zone-label">The Abyss · 100m</div>
+        <h1 class="zone-title">Mindset Shifts</h1>
+        <p class="zone-subtitle">Three Strategic Shifts for Leaders</p>
+      </div>
+
+      <article class="content-card" data-slide="41" id="slide-41">
+        <div class="card-inner">
+          <h2>Three Mindset Shifts</h2>
+          <p>Technical controls aside, we should also embrace three mindset shifts as leaders.</p>
+          <button class="play-btn" data-slide="41" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="42" id="slide-42">
+        <div class="card-inner">
+          <h2>Shift #1: Make Upfront Trade-offs</h2>
+          <p>We need to be honest: security, cost, and usability exist in tension. You cannot maximize all three
+            simultaneously. The key is to <strong>consciously decide</strong> where you want to be on this spectrum.</p>
+          <button class="play-btn" data-slide="42" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="43" id="slide-43">
+        <div class="card-inner">
+          <img src="images/slide-43.png?v=2" alt="Slide 43" class="slide-image" loading="lazy">
+          <h2>The Security-Cost-Usability Trilemma</h2>
+          <p>You have three competing goals: <strong>Security/Resilience</strong>, <strong>Cost Savings</strong>, and
+            <strong>Usability</strong>. You can pick two, but you can't have all three at maximum levels.
+          </p>
+          <button class="play-btn" data-slide="43" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="44" id="slide-44">
+        <div class="card-inner">
+          <h2>Trilemma Example</h2>
+          <div class="sharepoint-card">
+            <span class="lock-icon">🔒</span>
+            <div class="sharepoint-text">
+              <strong>Internal Case Study: STELLARNET Computers</strong>
+              <p>This section includes a corporate case study hosted on your organisation's SharePoint.</p>
+            </div>
+            <a href="#" class="sharepoint-link" target="_blank" rel="noopener">Open Case Study →</a>
+          </div>
+          <button class="play-btn" data-slide="44" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="45" id="slide-45">
+        <div class="card-inner">
+          <h2>Stick to Your Trade-offs</h2>
+          <p>We often start with security in mind. However, as pressures mount on usability, we sometimes loosen
+            measures — resulting in neither great user experience nor security.</p>
+          <p>We need to understand the risks involved, make trade-offs upfront and stick with them.</p>
+          <p class="highlight-quote">This happens when trade-offs were not made consciously, so you second-guess
+            yourself every time someone complains that security is inconvenient. You made the decision for good reasons
+            — stick to it.</p>
+          <button class="play-btn" data-slide="45" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="46" id="slide-46">
+        <div class="card-inner exercise-card">
+          <h2>🏋️ Exercise: Crown Jewels Trilemma</h2>
+          <p>Take a moment to think about these two questions:</p>
+          <ul>
+            <li>What are your organization's <strong>'crown jewels'</strong> — your most critical assets, data, and
+              systems? What would hurt most if compromised or unavailable?</li>
+            <li>What <strong>support would help</strong> you better manage these trade-offs? More budget? Better tools?
+              Executive support?</li>
+          </ul>
+          <button class="play-btn" data-slide="46" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="47" id="slide-47">
+        <div class="card-inner">
+          <h2>Shift #2: From Compliance to Outcomes</h2>
+          <p>Many organizations treat security as a compliance exercise — implementing controls to satisfy auditors, but
+            not thinking about whether those controls are effective.</p>
+          <p>We need to shift from asking <em>'Are we compliant?'</em> to asking <strong><em>'Are we actually
+                secure?'</em></strong></p>
+          <button class="play-btn" data-slide="47" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="48" id="slide-48">
+        <div class="card-inner">
+          <h2>The Limitations of Compliance</h2>
+          <p>Compliance frameworks have value — they provide a baseline. But relying on traditional audit compliance is
+            insufficient for cybersecurity.</p>
+          <p>Why? There is no one-size-fits-all standard. Systems vary greatly in setup and risk levels. <strong>More
+              controls ≠ more security.</strong> You can implement dozens of controls poorly and be less secure than an
+            organisation with a few controls implemented well.</p>
+          <button class="play-btn" data-slide="48" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="49" id="slide-49">
+        <div class="card-inner">
+          <!-- Risk-Based Approach Cycle Diagram -->
+          <svg viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg"
+            style="width:100%;max-width:420px;margin:1rem auto;display:block;background:#e8eef4;border-radius:0.75rem;padding:1rem;"
+            aria-label="Risk-Based Approach Cycle Diagram">
+            <defs>
+              <style>
+                .rba-box {
+                  fill: #2e7da3;
+                  rx: 12;
+                  ry: 12;
+                }
+
+                .rba-text {
+                  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+                  fill: white;
+                  font-weight: 700;
+                  font-size: 16px;
+                  text-anchor: middle;
+                }
+
+                .rba-arrow {
+                  fill: none;
+                  stroke: #b0c8d8;
+                  stroke-width: 12;
+                  stroke-linecap: round;
+                }
+
+                .rba-arrowhead {
+                  fill: #b0c8d8;
+                }
+              </style>
+              <marker id="arrowR" markerWidth="10" markerHeight="8" refX="5" refY="4" orient="auto">
+                <path d="M0,0 L10,4 L0,8 Z" class="rba-arrowhead" />
+              </marker>
+            </defs>
+            <!-- Circular arrow paths -->
+            <!-- Right arc: from top box down to right box -->
+            <path d="M 270,95 C 370,95 380,200 330,265" class="rba-arrow" marker-end="url(#arrowR)" />
+            <!-- Bottom arc: from right box left to left box -->
+            <path d="M 260,330 C 210,390 140,390 100,330" class="rba-arrow" marker-end="url(#arrowR)" />
+            <!-- Left arc: from left box up to top box -->
+            <path d="M 75,250 C 30,180 50,95 140,70" class="rba-arrow" marker-end="url(#arrowR)" />
+            <!-- Box 1: Understand the Risk (top center) -->
+            <rect x="140" y="30" width="160" height="80" class="rba-box" />
+            <text x="220" y="63" class="rba-text">1. Understand the</text>
+            <text x="220" y="85" class="rba-text">Risk</text>
+            <!-- Box 2: Design Mitigations (right) -->
+            <rect x="230" y="265" width="160" height="80" class="rba-box" />
+            <text x="310" y="298" class="rba-text">2. Design</text>
+            <text x="310" y="320" class="rba-text">Mitigations</text>
+            <!-- Box 3: Perform Outcomes-based Testing (left) -->
+            <rect x="30" y="265" width="170" height="80" class="rba-box" />
+            <text x="115" y="290" class="rba-text">3. Perform</text>
+            <text x="115" y="310" class="rba-text">Outcomes-based</text>
+            <text x="115" y="330" class="rba-text">Testing</text>
+          </svg>
+          <h2>Move to Risk-Based Approach</h2>
+          <p>Three steps to make this shift:</p>
+          <ol>
+            <li><strong>Understand the risk</strong> — What data or services does the system handle? What's the
+              potential impact?</li>
+            <li><strong>Design mitigations</strong> — Based on risk, what controls are appropriate? Don't just apply a
+              standard template.</li>
+            <li><strong>Outcomes-based testing</strong> — Don't just check if controls are configured — test if they
+              actually work. Can your monitoring detect an attack? Would your backup restore successfully?</li>
+          </ol>
+          <button class="play-btn" data-slide="49" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="50" id="slide-50">
+        <div class="card-inner">
+          <h2>The COMET Example</h2>
+          <div class="sharepoint-card">
+            <span class="lock-icon">🔒</span>
+            <div class="sharepoint-text">
+              <strong>Internal Case Study: COMET</strong>
+              <p>This section includes a corporate case study hosted on your organisation's SharePoint.</p>
+            </div>
+            <a href="#" class="sharepoint-link" target="_blank" rel="noopener">Open Case Study →</a>
+          </div>
+          <button class="play-btn" data-slide="50" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="51" id="slide-51">
+        <div class="card-inner">
+          <h2>Surface Vulnerabilities Proactively</h2>
+          <p>As we conduct more security testing, more vulnerabilities will be uncovered. That might sound bad, but
+            <strong>it's actually good</strong>. It's much better to find vulnerabilities during testing than to have
+            attackers find them in production.
+          </p>
+          <p class="highlight-quote">We should encourage teams to surface vulnerabilities proactively for better
+            visibility, rather than hiding them for fear of looking bad. Security is a team sport, not a blame game.</p>
+          <button class="play-btn" data-slide="51" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="52" id="slide-52">
+        <div class="card-inner">
+          <h2>Shift #3: Assume Breach. Assume Fail.</h2>
+          <p>The third mindset shift: <strong>Assume Breach, Assume Fail</strong>. This is about acknowledging that
+            there is no perfect resilience. No matter how good your security is, plan for the possibility of both a
+            successful breach and the failure of your resilience measures.</p>
+          <button class="play-btn" data-slide="52" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="53" id="slide-53">
+        <div class="card-inner">
+          <img src="images/slide-53.png?v=2" alt="Slide 53" class="slide-image" loading="lazy">
+          <h2>SOC vs. Threat Hunting</h2>
+          <p>A traditional <strong>Security Operations Center</strong> is like castle guards — they rely on known
+            indicators. If the attacker uses a new technique, they might slip past.</p>
+          <p><strong>Threat hunting</strong> is different — hunters proactively search based on understanding of
+            attacker behaviour. They develop hypotheses on potential risks and actively validate them. Both are needed,
+            but threat hunting represents the outcomes mindset.</p>
+          <button class="play-btn" data-slide="53" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="54" id="slide-54">
+        <div class="card-inner">
+          <h2>Red Teams</h2>
+          <p>Red teams help organisations test their assumptions. GovTech's red team has partnered with many mature
+            agencies to uncover overlooked vulnerabilities.</p>
+          <button class="play-btn" data-slide="54" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="55" id="slide-55">
+        <div class="card-inner">
+          <img src="images/slide-55.png?v=2" alt="Slide 55" class="slide-image" loading="lazy">
+          <h2>Business Continuity Plans</h2>
+          <p>Critical systems need well-planned and rehearsed <strong>non-digital BCPs</strong>. If you have a digital
+            BCP stored on the very systems that just failed, how are you going to access it?</p>
+          <p>You need printed copies, offline documentation, and procedures that work without IT systems. And they need
+            to be rehearsed — beyond tabletop exercises.</p>
+          <button class="play-btn" data-slide="55" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="56" id="slide-56">
+        <div class="card-inner">
+          <img src="images/slide-56.png?v=2" alt="Slide 56" class="slide-image" loading="lazy">
+          <h2>The Restaurant Analogy</h2>
+          <p>Resilience is like keeping a restaurant running:</p>
+          <ul>
+            <li><strong>Prevent fires</strong> — fire-safe equipment, proper electrical systems, training. Like your
+              cybersecurity controls.</li>
+            <li><strong>Mitigate impact</strong> — fire alarms, sprinklers, insurance. Like detection and response
+              capabilities.</li>
+            <li><strong>Keep operating</strong> — fire exits, emergency procedures, contingency plans. That's business
+              continuity planning.</li>
+          </ul>
+          <button class="play-btn" data-slide="56" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="57" id="slide-57">
+        <div class="card-inner">
+          <img src="images/slide-57.png?v=2" alt="Slide 57" class="slide-image" loading="lazy">
+          <h2>Things Will Go Wrong</h2>
+          <p>Despite our best efforts, things can and will go wrong. Accepting this reality is the first step to true
+            resilience.</p>
+          <button class="play-btn" data-slide="57" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="58" id="slide-58">
+        <div class="card-inner">
+          <img src="images/slide-58.png?v=2" alt="Slide 58" class="slide-image" loading="lazy">
+          <h2>The Cost of Over-Insurance</h2>
+          <p>"Over-insuring" through prevention leads to very high costs. For example, guarding against cloud outages
+            with a multi-cloud approach can <strong>2x to 10x the cost</strong>. Having on-premise architecture isn't
+            necessarily more resilient either.</p>
+          <button class="play-btn" data-slide="58" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="59" id="slide-59">
+        <div class="card-inner">
+          <h2>Summary</h2>
+          <p>We covered three categories of threats: <strong>Preventable</strong>, <strong>Largely Preventable</strong>,
+            and <strong>Difficult to Prevent</strong>. We discussed APTs and the challenges of sophisticated attackers
+            with significant resources.</p>
+          <p>And three critical mindset shifts:</p>
+          <ol>
+            <li><strong>Make upfront trade-offs</strong> between security, cost, and usability.</li>
+            <li><strong>Move from compliance to outcomes.</strong></li>
+            <li><strong>Assume breach, assume fail.</strong></li>
+          </ol>
+          <p class="highlight-quote">Perfect security is impossible, but significant improvement is within reach for
+            most of us. Start with the basics, make conscious trade-offs, and focus on outcomes.</p>
+          <button class="play-btn" data-slide="59" aria-label="Play audio for this section">🔊</button>
+        </div>
+      </article>
+
+      <div class="zone-transition">
+        <div class="fish-group">✨ 🐚 ✨</div>
+        <p class="transition-text">You've reached the Seabed...</p>
+      </div>
+    </section>
+
+    <!-- ============ SEABED: Reflection & Completion ============ -->
+    <section class="depth-zone zone-seabed" data-zone="seabed" data-depth="999">
+      <div class="zone-header">
+        <div class="zone-label">The Seabed</div>
+        <h1 class="zone-title">You Found the Treasure!</h1>
+        <p class="zone-subtitle">Congratulations — you've completed your deep dive.</p>
+      </div>
+
+      <div class="treasure-chest" id="treasure-chest">
+        <div class="chest-glow"></div>
+        <div class="chest-emoji">💰</div>
+      </div>
+
+      <div class="reflection-section">
+        <h2>Your Reflections</h2>
+        <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1rem;">Here are all the
+          bookmarks and notes you made during your dive:</p>
+        <div id="reflection-bookmarks" class="reflection-bookmarks">
+          <p class="empty-state">No bookmarks recorded. Scroll back up to revisit sections and add bookmarks.</p>
+        </div>
+      </div>
+
+      <div class="questions-summary" id="questions-summary">
+        <h2>💬 Your Questions for Your Trainer</h2>
+        <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem;margin-bottom:1rem;">These questions
+          will be sent to your trainer when you mark this eLearning as complete.</p>
+        <div id="questions-list" class="questions-list">
+          <p class="empty-state">No questions recorded. Select any text while reading to ask a question.</p>
+        </div>
+      </div>
+
+      <div class="completion-section" id="completion-section">
+        <h2>Mark as Complete</h2>
+        <p>Ready to log your completion? Any questions you've added will be sent to your trainer.</p>
+        <button id="complete-btn" class="complete-btn">
+          <span>I've Completed the Deep Dive</span>
+        </button>
+        <p id="complete-confirmation" class="complete-confirmation" hidden>
+          ✨ Completion logged! Thank you for diving deep into cybersecurity & resilience.
+        </p>
+      </div>
+
+      <footer class="site-footer">
+        <p>Deep Dive: Cybersecurity &amp; Resilience — A learning experience for senior leadership</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- Bookmark Popup -->
+  <div id="bookmark-popup" class="bookmark-popup">
+    <div class="popup-inner">
+      <div class="popup-star">⭐</div>
+      <h3>Add a Bookmark</h3>
+      <textarea id="bookmark-note" placeholder="Add a note (optional)..." rows="3" maxlength="280"></textarea>
+      <div class="popup-actions">
+        <button id="bookmark-save" class="btn-save">Save Bookmark</button>
+        <button id="bookmark-cancel" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Text Selection Toolbar -->
+  <div id="selection-toolbar" class="selection-toolbar">
+    <button id="selection-add-question" class="selection-toolbar-btn">
+      💬 Ask a Question
+    </button>
+  </div>
+
+  <!-- Question Popup -->
+  <div id="question-popup" class="question-popup">
+    <div class="question-popup-inner">
+      <div class="question-popup-icon">💬</div>
+      <h3>Ask a Question</h3>
+      <div id="question-selected-text" class="question-selected-text"></div>
+      <textarea id="question-input" placeholder="Type your question here..." rows="3" maxlength="1000"></textarea>
+      <div id="question-char-count" class="question-char-count">0 / 1000</div>
+      <p class="question-hint">Your questions will be collated and sent to your Trainer when you mark this eLearning as
+        complete.</p>
+      <div class="question-actions">
+        <button id="question-save" class="btn-save">Save Question</button>
+        <button id="question-cancel" class="btn-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Surface for Air button -->
+  <button id="surface-btn" class="surface-btn" aria-label="Scroll to top" hidden>
+    🤿 Surface
+  </button>
+
+  <!-- Audio status indicator -->
+  <div id="audio-indicator" class="audio-indicator" style="display:none;">
+    <div class="audio-wave">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <span class="audio-status-text">Reading aloud...</span>
+  </div>
+
+  <script src="js/content.js"></script>
+  <script src="js/bookmarks.js"></script>
+  <script src="js/highlights.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

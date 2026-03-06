@@ -721,7 +721,7 @@ body {
 
 .content-card h2 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: var(--white);
@@ -730,8 +730,8 @@ body {
 .content-card p {
   margin-bottom: 1rem;
   color: var(--white-80);
-  font-size: 1rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.85;
 }
 
 .content-card p:last-of-type {
@@ -742,11 +742,12 @@ body {
 .content-card ol {
   margin: 0.75rem 0 1rem 1.5rem;
   color: var(--white-80);
+  font-size: 1.1rem;
 }
 
 .content-card li {
   margin-bottom: 0.5rem;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .content-card strong {
@@ -756,6 +757,47 @@ body {
 
 .content-card em {
   color: var(--white-60);
+}
+
+/* Dark text for lighter zones (surface) for readability */
+.zone-surface .content-card h2 {
+  color: #1B2B50;
+}
+
+.zone-surface .content-card p,
+.zone-surface .content-card ul,
+.zone-surface .content-card ol {
+  color: #1e3a5f;
+}
+
+.zone-surface .content-card strong {
+  color: #0d1b2a;
+}
+
+.zone-surface .content-card em {
+  color: #2c4a6e;
+}
+
+.zone-surface .content-card li {
+  color: #1e3a5f;
+}
+
+.zone-surface .card-inner {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.zone-surface .card-inner:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.zone-surface .zone-header h2,
+.zone-surface .zone-label {
+  color: #1B2B50;
+}
+
+.zone-surface .zone-header p {
+  color: #1e3a5f;
 }
 
 /* Highlight Quotes */
@@ -1534,6 +1576,16 @@ body {
   }
 
   #depth-gauge {
+    position: fixed;
+    right: 0.75rem;
+    top: auto;
+    bottom: 1rem;
+    transform: none;
+    height: 25vh;
+    z-index: 90;
+  }
+
+  .gauge-labels {
     display: none;
   }
 
@@ -1542,7 +1594,13 @@ body {
   }
 
   .content-card h2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+  }
+
+  .content-card p,
+  .content-card ul,
+  .content-card ol {
+    font-size: 1.05rem;
   }
 
   .sharepoint-card {

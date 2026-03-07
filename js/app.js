@@ -7,7 +7,6 @@
 
     // --- Google Form Config ---
     const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScYeD-ogN23Bv2nMqwuGHftnPEfFtYsI6yAAGanAkwwxoSDjw/formResponse';
-    const AUDIO_FIELD_ID = 'entry.1225454262';
     // Learner Questions field — update this ID once you get the pre-filled link
     const QUESTIONS_FIELD_ID = 'entry.664812276';
 
@@ -15,20 +14,18 @@
     document.addEventListener('DOMContentLoaded', () => {
         BookmarkManager.init();
         HighlightManager.init();
-        AudioManager.init();
         initBubbles();
         initScrollObservers();
         initBookmarkInteractions();
         initDrawer();
-        initAudioToggle();
         initSurfaceButton();
         initCompletionButton();
-        initPlayButtons();
         initTextSelection();
         initQuestionPopup();
         initQuestionButton();
         initSectionMenu();
         updateQuestionCount();
+        initDiveChooser();
 
         // Register service worker
         if ('serviceWorker' in navigator) {
@@ -36,28 +33,103 @@
         }
     });
 
-    // --- Bubbles ---
+    // --- Dive Style Chooser ---
+    function initDiveChooser() {
+        const listenBtn = document.getElementById('dive-option-listen');
+        const readBtn = document.getElementById('dive-option-read');
+        const chooserCard = document.querySelector('.dive-chooser-card');
+        if (!listenBtn || !readBtn || !chooserCard) return;
+
+        listenBtn.addEventListener('click', () => {
+            listenBtn.classList.add('selected');
+            // Scroll to content (podcast integration to be added later)
+            const firstSlide = document.getElementById('slide-1');
+            if (firstSlide) {
+                firstSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Fade out the chooser after a beat
+            setTimeout(() => {
+                chooserCard.style.transition = 'opacity 0.5s, transform 0.5s';
+                chooserCard.style.opacity = '0';
+                chooserCard.style.transform = 'translateY(-10px)';
+                setTimeout(() => { chooserCard.style.display = 'none'; }, 500);
+            }, 400);
+        });
+
+        readBtn.addEventListener('click', () => {
+            readBtn.classList.add('selected');
+            // Scroll past to the onboarding card
+            const onboarding = document.querySelector('.onboarding-card');
+            if (onboarding) {
+                onboarding.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
+
+    // --- Depth-Aware Particles ---
     function initBubbles() {
         const container = document.getElementById('bubbles-container');
         if (!container) return;
 
-        function createBubble() {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            const size = Math.random() * 12 + 4;
-            bubble.style.width = size + 'px';
-            bubble.style.height = size + 'px';
-            bubble.style.left = Math.random() * 100 + '%';
-            bubble.style.animationDuration = (Math.random() * 8 + 6) + 's';
-            bubble.style.animationDelay = (Math.random() * 3) + 's';
-            container.appendChild(bubble);
-            bubble.addEventListener('animationend', () => bubble.remove());
+        // Depth zone config for particles
+        const PARTICLE_ZONES = {
+            surface: { type: 'bubble', sizeMin: 6, sizeMax: 14, speed: [4, 8], direction: 'up', brightness: 0.4 },
+            shallows: { type: 'bubble', sizeMin: 5, sizeMax: 12, speed: [6, 10], direction: 'up', brightness: 0.3 },
+            reef: { type: 'bubble', sizeMin: 3, sizeMax: 8, speed: [8, 14], direction: 'drift', brightness: 0.15 },
+            twilight: { type: 'snow', sizeMin: 2, sizeMax: 5, speed: [12, 20], direction: 'down', brightness: 0.1 },
+            abyss: { type: 'snow', sizeMin: 2, sizeMax: 5, speed: [15, 25], direction: 'down', brightness: 0.08 },
+            seabed: { type: 'snow', sizeMin: 2, sizeMax: 4, speed: [18, 30], direction: 'down', brightness: 0.06 }
+        };
+
+        function getCurrentZone() {
+            const scrollY = window.scrollY + window.innerHeight / 2;
+            const zones = document.querySelectorAll('.depth-zone');
+            let current = 'surface';
+            zones.forEach(z => {
+                if (scrollY >= z.offsetTop) current = z.dataset.zone;
+            });
+            return current;
         }
 
-        for (let i = 0; i < 15; i++) {
-            setTimeout(createBubble, i * 300);
+        const MAX_PARTICLES = 8;
+
+        function createParticle() {
+            // Cap particle count across all zones
+            if (container.children.length >= MAX_PARTICLES) return;
+
+            const zone = getCurrentZone();
+            const config = PARTICLE_ZONES[zone] || PARTICLE_ZONES.surface;
+            const particle = document.createElement('div');
+            const size = Math.random() * (config.sizeMax - config.sizeMin) + config.sizeMin;
+
+            if (config.type === 'snow') {
+                particle.className = 'marine-snow';
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = '-5px';
+                const duration = Math.random() * (config.speed[1] - config.speed[0]) + config.speed[0];
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = (Math.random() * 3) + 's';
+            } else {
+                particle.className = 'bubble';
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                const duration = Math.random() * (config.speed[1] - config.speed[0]) + config.speed[0];
+                particle.style.animationDuration = duration + 's';
+                particle.style.animationDelay = (Math.random() * 3) + 's';
+            }
+
+            container.appendChild(particle);
+            particle.addEventListener('animationend', () => particle.remove());
         }
-        setInterval(createBubble, 800);
+
+        // Initial burst (up to cap)
+        for (let i = 0; i < MAX_PARTICLES; i++) {
+            setTimeout(createParticle, i * 300);
+        }
+        setInterval(createParticle, 800);
     }
 
     // --- Scroll Observers ---
@@ -67,9 +139,6 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     const slideNum = parseInt(entry.target.dataset.slide);
-                    if (slideNum && entry.intersectionRatio > 0.5) {
-                        AudioManager.onSectionVisible(slideNum);
-                    }
                 }
             });
         }, { threshold: [0.2, 0.5] });
@@ -99,6 +168,19 @@
                 });
                 ticking = true;
             }
+        });
+
+        // --- Hierarchy Role Scroll-Reveal ---
+        const roleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.ocean-role').forEach(role => {
+            roleObserver.observe(role);
         });
     }
 
@@ -529,23 +611,7 @@
         document.getElementById('drawer-overlay').classList.remove('open');
     }
 
-    // --- Audio Toggle ---
-    function initAudioToggle() {
-        document.getElementById('audio-mode-toggle').addEventListener('click', () => {
-            AudioManager.toggleAudioMode();
-        });
-    }
 
-    // --- Play Buttons ---
-    function initPlayButtons() {
-        document.addEventListener('click', (e) => {
-            const btn = e.target.closest('.play-btn');
-            if (!btn) return;
-            e.stopPropagation();
-            const slideNum = parseInt(btn.dataset.slide);
-            if (slideNum) AudioManager.toggle(slideNum);
-        });
-    }
 
     // --- Surface Button ---
     function initSurfaceButton() {
@@ -568,21 +634,19 @@
         const confirmation = document.getElementById('complete-confirmation');
 
         btn.addEventListener('click', () => {
-            const audioUsed = AudioManager.isAudioModeOn() ? 'Yes' : 'No';
             const questions = HighlightManager.formatForSubmission();
 
             // Submit to Google Form
-            submitToGoogleForm(audioUsed, questions);
+            submitToGoogleForm(questions);
 
             btn.hidden = true;
             confirmation.hidden = false;
         });
     }
 
-    function submitToGoogleForm(audioUsed, questions) {
+    function submitToGoogleForm(questions) {
         // Build form data
         const formData = new FormData();
-        formData.append(AUDIO_FIELD_ID, audioUsed);
         if (questions) {
             formData.append(QUESTIONS_FIELD_ID, questions);
         }
@@ -594,7 +658,7 @@
             body: formData
         }).catch(() => {
             // Fallback: iframe approach
-            const url = `${GOOGLE_FORM_URL}?${AUDIO_FIELD_ID}=${encodeURIComponent(audioUsed)}${questions ? '&' + QUESTIONS_FIELD_ID + '=' + encodeURIComponent(questions.substring(0, 1500)) : ''}`;
+            const url = `${GOOGLE_FORM_URL}?${questions ? QUESTIONS_FIELD_ID + '=' + encodeURIComponent(questions.substring(0, 1500)) : ''}`;
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.name = 'form-submit-' + Date.now();

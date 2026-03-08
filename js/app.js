@@ -26,6 +26,7 @@
         initSectionMenu();
         updateQuestionCount();
         initDiveChooser();
+        initAudioPlayer();
 
         // Register service worker
         if ('serviceWorker' in navigator) {
@@ -42,28 +43,125 @@
 
         listenBtn.addEventListener('click', () => {
             listenBtn.classList.add('selected');
-            // Scroll to content (podcast integration to be added later)
-            const firstSlide = document.getElementById('slide-1');
-            if (firstSlide) {
-                firstSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-            // Fade out the chooser after a beat
-            setTimeout(() => {
-                chooserCard.style.transition = 'opacity 0.5s, transform 0.5s';
-                chooserCard.style.opacity = '0';
-                chooserCard.style.transform = 'translateY(-10px)';
-                setTimeout(() => { chooserCard.style.display = 'none'; }, 500);
-            }, 400);
+            // Show audio player and start playback
+            showAudioPlayer();
         });
 
         readBtn.addEventListener('click', () => {
             readBtn.classList.add('selected');
-            // Scroll past to the onboarding card
-            const onboarding = document.querySelector('.onboarding-card');
-            if (onboarding) {
-                onboarding.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const desc = readBtn.querySelector('.dive-option-desc');
+            if (desc) {
+                desc.style.transition = 'opacity 0.3s ease';
+                desc.style.opacity = '0';
+                setTimeout(() => {
+                    desc.textContent = '✓ You\'re all set — scroll down to start exploring!';
+                    desc.style.fontWeight = '600';
+                    desc.style.opacity = '1';
+                }, 300);
             }
         });
+    }
+
+    // --- Audio Player ---
+    function initAudioPlayer() {
+        const bar = document.getElementById('audio-player-bar');
+        const audio = document.getElementById('audio-element');
+        const playPauseBtn = document.getElementById('audio-play-pause');
+        const iconPlay = playPauseBtn?.querySelector('.audio-icon-play');
+        const iconPause = playPauseBtn?.querySelector('.audio-icon-pause');
+        const seekSlider = document.getElementById('audio-seek');
+        const currentTimeEl = document.getElementById('audio-current-time');
+        const durationEl = document.getElementById('audio-duration');
+        const speedSelect = document.getElementById('audio-speed');
+        const closeBtn = document.getElementById('audio-close');
+
+        if (!bar || !audio) return;
+
+        let isSeeking = false;
+
+        function formatTime(seconds) {
+            if (!seconds || isNaN(seconds)) return '0:00';
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        // Update duration once loaded
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+            seekSlider.max = audio.duration;
+        });
+
+        // Update progress as audio plays
+        audio.addEventListener('timeupdate', () => {
+            if (!isSeeking) {
+                seekSlider.value = audio.currentTime;
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+                // Update slider background fill
+                const pct = (audio.currentTime / audio.duration) * 100 || 0;
+                seekSlider.style.background = `linear-gradient(to right, var(--surface) ${pct}%, var(--white-10) ${pct}%)`;
+            }
+        });
+
+        // Seek
+        seekSlider.addEventListener('input', () => {
+            isSeeking = true;
+            currentTimeEl.textContent = formatTime(parseFloat(seekSlider.value));
+            const pct = (seekSlider.value / audio.duration) * 100 || 0;
+            seekSlider.style.background = `linear-gradient(to right, var(--surface) ${pct}%, var(--white-10) ${pct}%)`;
+        });
+        seekSlider.addEventListener('change', () => {
+            audio.currentTime = parseFloat(seekSlider.value);
+            isSeeking = false;
+        });
+
+        // Play / Pause
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        });
+
+        audio.addEventListener('play', () => {
+            iconPlay.hidden = true;
+            iconPause.hidden = false;
+        });
+        audio.addEventListener('pause', () => {
+            iconPlay.hidden = false;
+            iconPause.hidden = true;
+        });
+
+        // Speed
+        speedSelect.addEventListener('change', () => {
+            audio.playbackRate = parseFloat(speedSelect.value);
+        });
+
+        // Close player
+        closeBtn.addEventListener('click', () => {
+            audio.pause();
+            bar.hidden = true;
+            document.body.classList.remove('audio-active');
+        });
+
+        // Reset when track ends
+        audio.addEventListener('ended', () => {
+            iconPlay.hidden = false;
+            iconPause.hidden = true;
+        });
+    }
+
+    function showAudioPlayer() {
+        const bar = document.getElementById('audio-player-bar');
+        const audio = document.getElementById('audio-element');
+        if (!bar || !audio) return;
+        bar.hidden = false;
+        document.body.classList.add('audio-active');
+        // Auto-play after a short delay
+        setTimeout(() => {
+            audio.play().catch(() => { /* auto-play blocked, user can press play */ });
+        }, 600);
     }
 
     // --- Depth-Aware Particles ---

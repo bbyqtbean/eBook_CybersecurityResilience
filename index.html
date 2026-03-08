@@ -131,7 +131,7 @@
               <div class="dive-option-label">Listen &amp; Drift</div>
               <div class="dive-option-desc">Sit back and listen to the full briefing as a guided audio experience.</div>
             </div>
-            <div class="dive-option-arrow">→</div>
+
           </button>
 
           <div class="dive-option-divider">
@@ -144,7 +144,7 @@
               <div class="dive-option-label">Read &amp; Explore</div>
               <div class="dive-option-desc">Scroll through at your own pace, interacting with cards and bookmarks.</div>
             </div>
-            <div class="dive-option-arrow">↓</div>
+
           </button>
         </div>
       </div>
@@ -835,6 +835,35 @@
     </section>
 
   </main>
+
+  <!-- Audio Player Bar -->
+  <div id="audio-player-bar" class="audio-player-bar" hidden>
+    <div class="audio-player-inner">
+      <button id="audio-play-pause" class="audio-play-pause" aria-label="Play or pause audio">
+        <span class="audio-icon-play">▶</span>
+        <span class="audio-icon-pause" hidden>⏸</span>
+      </button>
+      <div class="audio-progress-group">
+        <div class="audio-track-title">🎧 Staying Operational When Digital Defenses Fail</div>
+        <div class="audio-seek-row">
+          <span id="audio-current-time" class="audio-time">0:00</span>
+          <input type="range" id="audio-seek" class="audio-seek" min="0" max="100" value="0" step="0.1" aria-label="Seek audio">
+          <span id="audio-duration" class="audio-time">0:00</span>
+        </div>
+      </div>
+      <select id="audio-speed" class="audio-speed" aria-label="Playback speed">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+      <button id="audio-close" class="audio-close" aria-label="Close audio player">&times;</button>
+    </div>
+    <audio id="audio-element" preload="metadata">
+      <source src="[Audio]Staying_Operational_When_Digital_Defenses_Fail.m4a" type="audio/mp4">
+    </audio>
+  </div>
 
   <!-- Bookmark Popup -->
   <div id="bookmark-popup" class="bookmark-popup">

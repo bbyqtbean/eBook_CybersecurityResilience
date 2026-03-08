@@ -52,7 +52,7 @@ const BookmarkManager = {
                 list.innerHTML = bookmarks.map(b => `
           <div class="bookmark-item" data-bookmark-id="${b.id}" data-slide="${b.slideNum}">
             <div class="bookmark-item-header">
-              <span class="bookmark-item-section">⭐ ${b.zoneLabel || 'Unknown'}</span>
+              <span class="bookmark-item-section">⚓ ${b.zoneLabel || 'Unknown'}</span>
               <button class="bookmark-item-delete" data-delete-id="${b.id}" title="Remove bookmark">&times;</button>
             </div>
             ${b.note ? `<p class="bookmark-item-note">${escapeHtml(b.note)}</p>` : '<p class="bookmark-item-note" style="color:var(--white-40);font-style:italic">No note</p>'}
@@ -69,7 +69,7 @@ const BookmarkManager = {
             } else {
                 reflectionList.innerHTML = bookmarks.map(b => `
           <div class="reflection-bookmark-item">
-            <div class="section-label">⭐ ${b.zoneLabel || 'Unknown'} — Slide ${b.slideNum}</div>
+            <div class="section-label">⚓ ${b.zoneLabel || 'Unknown'} — Slide ${b.slideNum}</div>
             ${b.note ? `<div class="note-text">${escapeHtml(b.note)}</div>` : '<div class="note-text" style="color:var(--white-40);font-style:italic">No note</div>'}
           </div>
         `).join('');
@@ -91,7 +91,7 @@ const BookmarkManager = {
 
             const star = document.createElement('span');
             star.className = 'page-star';
-            star.textContent = '⭐';
+            star.textContent = '⚓';
             star.title = b.note || 'Bookmark';
             star.style.top = (b.relativeY || 10) + '%';
             star.style.left = (b.relativeX || 95) + '%';

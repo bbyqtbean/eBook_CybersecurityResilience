@@ -787,13 +787,14 @@ body {
 .onboarding-tip {
   background: rgba(255, 255, 255, 0.35);
   border-radius: 0.75rem;
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem;
   text-align: center;
   box-shadow: 0 4px 12px rgba(30, 58, 95, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   animation: floatIn 0.6s var(--ease-smooth) both, buoyancy 5s ease-in-out infinite;
+  overflow: hidden;
 }
 
 .onboarding-tip:nth-child(1) {
@@ -859,6 +860,157 @@ body {
   line-height: 1.4;
 }
 
+/* --- Onboarding Animated Demos (on-text) --- */
+.tip-demo-bookmark,
+.tip-demo-question {
+  position: relative;
+}
+
+/* --- Bookmark Tap Demo --- */
+.tip-demo-bookmark .demo-cursor-tap {
+  position: absolute;
+  font-size: 1.1rem;
+  bottom: -2px;
+  right: 25%;
+  opacity: 0;
+  animation: cursorTap 6s ease-in-out 1s infinite;
+  z-index: 5;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+  pointer-events: none;
+}
+
+@keyframes cursorTap {
+  0%, 10% { opacity: 0; transform: translate(12px, 8px); }
+  25% { opacity: 1; transform: translate(0, 0); }
+  35% { opacity: 1; transform: translate(0, 3px) scale(0.9); }
+  42% { opacity: 1; transform: translate(0, 0) scale(1); }
+  50% { opacity: 1; transform: translate(0, 0); }
+  58%, 100% { opacity: 0; transform: translate(0, 0); }
+}
+
+.tip-demo-bookmark .demo-ripple {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(27, 43, 80, 0.15);
+  bottom: 4px;
+  right: calc(25% + 2px);
+  opacity: 0;
+  transform: scale(0);
+  animation: ripplePulse 6s ease-in-out 1s infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+@keyframes ripplePulse {
+  0%, 33% { opacity: 0; transform: scale(0); }
+  38% { opacity: 0.5; transform: scale(0.5); }
+  50% { opacity: 0; transform: scale(2.5); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+.tip-demo-bookmark .demo-anchor-pop {
+  position: absolute;
+  font-size: 1.2rem;
+  bottom: -2px;
+  right: 25%;
+  transform: scale(0);
+  opacity: 0;
+  animation: anchorPop 6s ease-in-out 1s infinite;
+  z-index: 6;
+  pointer-events: none;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
+}
+
+@keyframes anchorPop {
+  0%, 32% { opacity: 0; transform: scale(0); }
+  38% { opacity: 1; transform: scale(1.3); }
+  42% { opacity: 1; transform: scale(1); }
+  75% { opacity: 1; transform: scale(1); }
+  88%, 100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* --- Question Highlight Demo --- */
+.demo-highlight-zone {
+  position: relative;
+  z-index: 1;
+  border-radius: 3px;
+  padding: 1px 2px;
+  display: inline;
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0.45) var(--highlight-progress, 0%),
+    transparent var(--highlight-progress, 0%)
+  );
+  animation: textHighlight 6s ease-in-out 1.5s infinite;
+}
+
+@keyframes textHighlight {
+  0%, 12% { --highlight-progress: 0%; background-size: 100% 100%; }
+  32% { --highlight-progress: 100%; }
+  65% { --highlight-progress: 100%; }
+  80%, 100% { --highlight-progress: 0%; }
+}
+
+/* Fallback: animate with background-size since custom properties may not animate */
+.demo-highlight-zone {
+  background: linear-gradient(
+    to right,
+    rgba(255, 215, 0, 0.45),
+    rgba(255, 215, 0, 0.45)
+  ) no-repeat left center;
+  background-size: 0% 100%;
+  animation: textHighlightFallback 6s ease-in-out 1.5s infinite;
+}
+
+@keyframes textHighlightFallback {
+  0%, 12% { background-size: 0% 100%; }
+  32% { background-size: 100% 100%; }
+  65% { background-size: 100% 100%; }
+  80%, 100% { background-size: 0% 100%; }
+}
+
+.tip-demo-question .demo-question-pop {
+  position: absolute;
+  font-size: 1.2rem;
+  top: -18px;
+  right: -4px;
+  transform: scale(0);
+  opacity: 0;
+  animation: questionPop 6s ease-in-out 1.5s infinite;
+  z-index: 6;
+  pointer-events: none;
+}
+
+@keyframes questionPop {
+  0%, 35% { opacity: 0; transform: scale(0); }
+  42% { opacity: 1; transform: scale(1.2); }
+  48% { opacity: 1; transform: scale(1); }
+  65% { opacity: 1; transform: scale(1); }
+  78%, 100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .demo-cursor-tap,
+  .demo-ripple,
+  .demo-highlight-zone,
+  .demo-question-pop,
+  .demo-anchor-pop {
+    animation: none !important;
+  }
+
+  .demo-cursor-tap,
+  .demo-ripple {
+    display: none;
+  }
+
+  .demo-highlight-zone {
+    background-size: 100% 100%;
+  }
+}
+
 /* --- Content Cards --- */
 .content-card {
   max-width: var(--content-max-width);
@@ -876,10 +1028,10 @@ body {
 }
 
 .card-inner {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--white-10);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 1rem;
   padding: 2rem;
   position: relative;
@@ -890,8 +1042,8 @@ body {
 }
 
 .card-inner:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--white-20);
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .content-card h2 {
@@ -899,12 +1051,12 @@ body {
   font-size: 1.75rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: #111;
 }
 
 .content-card p {
   margin-bottom: 1rem;
-  color: var(--white-80);
+  color: #222;
   font-size: 1.1rem;
   line-height: 1.85;
 }
@@ -916,7 +1068,7 @@ body {
 .content-card ul,
 .content-card ol {
   margin: 0.75rem 0 1rem 1.5rem;
-  color: var(--white-80);
+  color: #222;
   font-size: 1.1rem;
 }
 
@@ -926,58 +1078,42 @@ body {
 }
 
 .content-card strong {
-  color: var(--white);
+  color: #000;
   font-weight: 600;
 }
 
 .content-card em {
-  color: var(--white-60);
+  color: #444;
 }
 
-/* Dark text for lighter zones (surface) for readability */
-.zone-surface .content-card h2 {
-  color: #1B2B50;
+/* Surface and Shallows zones — inherit base card-inner (already opaque white) */
+.zone-surface .content-card h2,
+.zone-shallows .content-card h2 {
+  color: #111;
 }
 
 .zone-surface .content-card p,
 .zone-surface .content-card ul,
-.zone-surface .content-card ol {
-  color: #1e3a5f;
+.zone-surface .content-card ol,
+.zone-shallows .content-card p,
+.zone-shallows .content-card ul,
+.zone-shallows .content-card ol {
+  color: #222;
 }
 
-.zone-surface .content-card strong {
-  color: #0d1b2a;
+.zone-surface .content-card strong,
+.zone-shallows .content-card strong {
+  color: #000;
 }
 
-.zone-surface .content-card em {
-  color: #2c4a6e;
+.zone-surface .content-card em,
+.zone-shallows .content-card em {
+  color: #444;
 }
 
-.zone-surface .content-card li {
-  color: #1e3a5f;
-}
-
-.zone-surface .card-inner {
-  background: rgba(255, 255, 255, 0.5);
-  border-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-}
-
-.zone-surface .card-inner:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
-
-/* Whiter cards for shallows zone */
-.zone-shallows .card-inner {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-}
-
-.zone-shallows .card-inner:hover {
-  background: rgba(255, 255, 255, 0.4);
+.zone-surface .content-card li,
+.zone-shallows .content-card li {
+  color: #222;
 }
 
 .zone-surface .zone-header h2,
@@ -1002,7 +1138,7 @@ body {
   border-left: 3px solid var(--gold);
   padding-left: 1.25rem;
   font-style: italic;
-  color: var(--gold-soft) !important;
+  color: #333 !important;
   margin: 1.5rem 0 !important;
 }
 
@@ -1021,20 +1157,22 @@ body {
 
 /* Takeaway Cards */
 .takeaway-card .card-inner {
-  background: rgba(255, 215, 0, 0.05);
-  border-color: rgba(255, 215, 0, 0.2);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 185, 0, 0.4);
+  border-width: 2px;
 }
 
 .takeaway-text {
   font-size: 1.2rem !important;
   font-weight: 600;
-  color: var(--gold) !important;
+  color: #8B6914 !important;
 }
 
 /* Exercise Cards */
 .exercise-card {
-  background: rgba(79, 195, 247, 0.05) !important;
-  border-color: rgba(79, 195, 247, 0.2) !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(79, 195, 247, 0.4) !important;
+  border-width: 2px !important;
 }
 
 /* Play Button */

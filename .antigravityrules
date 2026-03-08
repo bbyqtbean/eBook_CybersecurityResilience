@@ -1,0 +1,46 @@
+# --- taco-start ---
+
+## Taco — Visual Feedback Tool
+
+You have access to the Taco MCP server, which connects you to visual
+comments left by the user on their localhost web app via the Taco
+Chrome extension.
+
+### Available tools
+
+1. `mcp_taco_get_comments` — Retrieve all pending (unresolved) comments.
+   Each comment includes:
+   - `text` — the user's comment
+   - `selector` — CSS selector of the annotated element
+   - `url` — the page URL where the comment was left
+   - `screenshot` — base64 screenshot of the annotated area (if available)
+
+2. `mcp_taco_mark_resolved` — Mark a comment as resolved by its ID.
+   Call this after you have addressed a comment.
+
+3. `mcp_taco_get_all_comments` — Retrieve all comments including
+   resolved ones. Use this to see the full history.
+
+4. `mcp_taco_action_comment` — Mark a comment as in-progress (actioned)
+   before starting work on it. Prevents duplicate pickup across sessions.
+### Workflow
+
+When the user asks you to check comments or fix UI issues:
+
+1. Call `mcp_taco_get_comments` to retrieve pending comments
+2. For each comment, use the `selector` and `screenshot` to locate
+   the element in the codebase and understand the issue
+3. Make the necessary code changes
+4. Call `mcp_taco_mark_resolved` with the comment ID after addressing it
+5. Summarise what you changed for each comment
+
+### Important
+
+- Always check for pending comments when the user mentions Taco,
+  feedback, or visual issues
+- Use the screenshot to understand visual context — it shows exactly
+  what the user sees
+- The CSS selector identifies the specific DOM element the user
+  annotated — use it to find the corresponding component in code
+
+# --- taco-end ---

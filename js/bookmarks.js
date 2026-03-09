@@ -55,6 +55,7 @@ const BookmarkManager = {
               <span class="bookmark-item-section">⚓ ${b.zoneLabel || 'Unknown'}</span>
               <button class="bookmark-item-delete" data-delete-id="${b.id}" title="Remove bookmark">&times;</button>
             </div>
+            ${b.cardTitle ? `<div class="bookmark-item-title">${escapeHtml(b.cardTitle)}</div>` : ''}
             ${b.note ? `<p class="bookmark-item-note">${escapeHtml(b.note)}</p>` : '<p class="bookmark-item-note" style="color:var(--white-40);font-style:italic">No note</p>'}
             <div class="bookmark-item-slide">Slide ${b.slideNum} · ${formatTimestamp(b.timestamp)}</div>
           </div>
@@ -70,6 +71,7 @@ const BookmarkManager = {
                 reflectionList.innerHTML = bookmarks.map(b => `
           <div class="reflection-bookmark-item">
             <div class="section-label">⚓ ${b.zoneLabel || 'Unknown'} — Slide ${b.slideNum}</div>
+            ${b.cardTitle ? `<div class="bookmark-item-title" style="font-weight:600;margin:0.25rem 0;">${escapeHtml(b.cardTitle)}</div>` : ''}
             ${b.note ? `<div class="note-text">${escapeHtml(b.note)}</div>` : '<div class="note-text" style="color:var(--white-40);font-style:italic">No note</div>'}
           </div>
         `).join('');

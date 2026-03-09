@@ -324,7 +324,7 @@
         let pendingBookmark = null;
 
         document.getElementById('main-content').addEventListener('click', (e) => {
-            if (e.target.closest('button, a, input, textarea, .sharepoint-card, .bookmark-popup, .play-btn, .page-star, .highlight-indicator, .highlight-delete, .selection-toolbar')) return;
+            if (e.target.closest('button, a, input, textarea, video, audio, .sharepoint-card, .bookmark-popup, .play-btn, .page-star, .highlight-indicator, .highlight-delete, .selection-toolbar')) return;
 
             // Don't trigger bookmark if there's a text selection (that's for questions)
             const sel = window.getSelection();

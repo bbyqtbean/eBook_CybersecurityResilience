@@ -2,7 +2,7 @@
    Service Worker — Offline Caching
    ============================================ */
 
-const CACHE_NAME = 'deep-dive-v12';
+const CACHE_NAME = 'deep-dive-v13';
 const ASSETS = [
     './',
     './index.html',
@@ -37,6 +37,10 @@ self.addEventListener('fetch', (event) => {
     // Skip non-GET requests and Google Forms submissions
     if (event.request.method !== 'GET') return;
     if (event.request.url.includes('google.com/forms')) return;
+
+    // Skip media files — browser needs native Range request support for streaming
+    const url = event.request.url;
+    if (url.endsWith('.mp4') || url.endsWith('.m4a') || url.endsWith('.webm') || url.endsWith('.ogg')) return;
 
     event.respondWith(
         caches.match(event.request).then(cached => {

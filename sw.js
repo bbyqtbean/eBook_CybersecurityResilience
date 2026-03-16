@@ -2,7 +2,7 @@
    Service Worker — Offline Caching
    ============================================ */
 
-const CACHE_NAME = 'deep-dive-v13';
+const CACHE_NAME = 'deep-dive-v14';
 const ASSETS = [
     './',
     './index.html',

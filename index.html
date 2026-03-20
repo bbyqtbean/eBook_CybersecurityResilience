@@ -182,10 +182,10 @@
             trade-offs, and building genuine organisational resilience.</p>
           <p>We will start this introduction chapter covering the following:</p>
           <ul class="section-overview-list">
-            <li><strong>Accountability Is Layered</strong> — different responsibilities at each level of leadership</li>
-            <li><strong>The Cybersecurity Triad</strong> — the three pillars every security decision revolves around</li>
-            <li><strong>Resilience Is Vital</strong> — keeping services running when defences are breached</li>
-            <li><strong>A Framework for Understanding Threats</strong> — categorising threats by preventability</li>
+            <li><strong>A. Accountability Is Layered</strong> — different responsibilities at each level of leadership</li>
+            <li><strong>B. The Cybersecurity Triad</strong> — the three pillars every security decision revolves around</li>
+            <li><strong>C. Resilience Is Vital</strong> — keeping services running when defences are breached</li>
+            <li><strong>D. A Framework for Understanding Threats</strong> — categorising threats by preventability</li>
           </ul>
         </div>
       </article>
@@ -548,26 +548,27 @@
             <li><strong>A. Top-Tier APTs</strong> — state-sponsored actors with the resources to breach even Big Tech</li>
             <li><strong>B. Zero Days</strong> — exploits targeting unknown vulnerabilities that bypass all conventional defences</li>
             <li><strong>C. Cloud Service Failures</strong> — disruptions that originate from the very infrastructure you depend on</li>
+            <li><strong>D. The Fix for Difficult to Prevent Threats</strong></li>
           </ul>
-          <p class="section-overview-takeaway">Takeaway: Plan to operate when things go wrong — not just to prevent them.</p>
+          <p class="section-overview-takeaway">Takeaway: Some disruptions are beyond our control. How we respond matters more.</p>
         </div>
       </article>
 
       <article class="content-card" data-slide="19" id="slide-19">
         <div class="card-inner">
-          <h2>Advanced Persistent Threats</h2>
+          <h2>Top-Tier Advanced Persistent Threats</h2>
           <p>At the apex of the threat pyramid sit <strong>Advanced Persistent Threats (APTs)</strong>, typically
             state-sponsored actors with the resources, patience, and expertise to compromise even the most well-defended
             networks.</p>
           <p>They are called "persistent" for a reason. If one attack vector fails, they try another. They may spend
             months, sometimes years, inside a network before executing their objectives. Their toolkit includes
             zero-day vulnerabilities, custom-built malware, and sophisticated social engineering.</p>
-          <p>Unlike cybercriminals motivated by financial gain, top-tier APTs pursue <strong>strategic intelligence
+          <p>Unlike lower-tier APTs that are primarily motivated by financial gain, top-tier APTs pursue <strong>strategic intelligence
               objectives</strong>. They are not opportunistic. They are surgical.</p>
           <div class="dictionary-callout">
             <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>Zero-day vulnerability</strong> — A software flaw unknown to the vendor — so there's no patch yet</p>
-            <p class="dictionary-item"><strong>Social engineering</strong> — Manipulating people (not systems) to gain access — e.g. impersonation, phishing</p>
+            <p class="dictionary-item"><strong>Zero-day vulnerability</strong> — A software flaw unknown to the vendor, so there's no patch yet</p>
+            <p class="dictionary-item"><strong>Social engineering</strong> — Manipulating people (not systems) to gain access e.g. impersonation, phishing etc.</p>
           </div>
         </div>
       </article>
@@ -577,66 +578,43 @@
       <article class="content-card" data-slide="21" id="slide-21">
         <div class="card-inner">
           <h2>Zero Days</h2>
-          <p>Top-tier APTs possess the resources to develop or acquire <strong>zero-day exploits</strong>, which target
-            vulnerabilities unknown to the software vendor. There is no patch, because no one knows the flaw
-            exists.</p>
+          <p>A zero-day exploit targets a flaw that no one in the world knows about — not the software vendor, not the
+            security community. Because the flaw is unknown, no patch exists. Developing or acquiring these exploits is
+            extraordinarily expensive, and only top-tier APTs have the resources to do so.</p>
           <p>Some of these exploits require <strong>no user interaction at all</strong>. No phishing email to click, no
             malicious link to follow. The attack executes silently, invisibly, and with devastating effect.</p>
-          <div class="dictionary-callout">
-            <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>Zero-day exploit</strong> — An attack that weaponises a zero-day vulnerability before any patch exists</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="content-card" data-slide="22" id="slide-22">
-        <div class="card-inner">
-          <h2>APTs Pick Their Targets Carefully</h2>
-          <p>Zero-day exploits are extraordinarily expensive. Top-tier APTs are <strong>ROI-sensitive</strong>. They
-            only deploy these rare, costly tools against targets worth the investment.</p>
-          <p>Their objectives typically fall into two categories:</p>
+          <h3>Objectives of top-tier APTs</h3>
+          <p>Because these exploits are so costly, top-tier APTs are selective about where they deploy them. Their
+            objectives typically fall into two categories:</p>
           <ul>
             <li><strong>Secrets</strong>: intelligence related to national security, defence, and critical
               negotiations.</li>
             <li><strong>Disruptions</strong>: seizing control of Critical Information Infrastructures to destabilise
               essential services.</li>
           </ul>
-          <p>For most organisations, there's a reassuring flipside: the cost of a top-tier attack means most will not
+          <p>For most organisations, there is a reassuring flipside: the cost of a top-tier attack means most will never
             be targeted.</p>
           <h3>Even Big Tech Falls</h3>
-          <p>Take Microsoft. A company that spends billions on security and employs thousands of cybersecurity professionals.</p>
-          <p>Yet in 2023, a China-based threat actor tracked as <strong>APT Storm-0558</strong> successfully breached
-            Microsoft's defences and gained unauthorised access to email accounts across approximately
-            <strong>25 organisations</strong>, including government agencies.</p>
+          <p>But when top-tier APTs do strike, even the most resourced organisations are vulnerable.</p>
+          <p>In 2023, a China-based threat actor tracked as <strong>APT Storm-0558</strong> breached Microsoft — a
+            company that spends billions on security and employs thousands of cybersecurity professionals — gaining
+            unauthorised access to email accounts across approximately <strong>25 organisations</strong>, including
+            government agencies.</p>
           <p class="highlight-quote">No organisation, regardless of its resources, is immune.</p>
           <div class="dictionary-callout">
             <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>ROI (Return on Investment)</strong> — Whether the value gained justifies the cost — APTs apply this logic to decide who to attack</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="content-card" data-slide="23" id="slide-23">
-        <div class="card-inner">
-          <h2>Air-Gap What Truly Matters</h2>
-          <p>For information that is truly secret, one of the most effective protections remains the simplest in
-            concept: <strong>air-gapping</strong>. A network that is physically isolated from the internet cannot be
-            remotely hacked, at least not through conventional means.</p>
-          <p>But air-gapped networks are costly to build and maintain. The starting point is a clear-eyed assessment:
-            <strong>what information is genuinely secret, and what is merely sensitive?</strong> Not everything warrants
-            the operational overhead of an air-gapped environment.</p>
-          <div class="dictionary-callout">
-            <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>Air-gapping</strong> — Physically disconnecting a system from the internet so it can't be remotely compromised</p>
+            <p class="dictionary-item"><strong>Zero-day exploit</strong> — An attack that weaponises a zero-day vulnerability before any patch exists</p>
+            <p class="dictionary-item"><strong>ROI (Return on Investment)</strong> — Whether the value gained justifies the cost</p>
           </div>
         </div>
       </article>
 
       <article class="content-card" data-slide="24" id="slide-24">
         <div class="card-inner">
-          <h2>When the Problem Is Beyond Your Control</h2>
-          <p>Some disruptions defy even the most diligent preparation because they originate from the very providers
-            organisations depend on.</p>
+          <h2>Cloud Service Failures</h2>
+          <p>Another difficult to prevent disruption that is beyond our control: cloud service failures. These originate
+            from non-cyber causes — hardware faults, software bugs, misconfigurations — yet can be just as damaging as
+            any cyberattack.</p>
           <p>In February 2023, <strong>Microsoft Azure</strong> experienced a cascading power supply failure, causing
             widespread outages globally. In July 2024, <strong>CrowdStrike</strong> pushed a faulty system update that
             crashed millions of devices, bringing airlines, hospitals, and entire industries to a standstill.</p>
@@ -644,23 +622,56 @@
             planned for.</p>
           <div class="dictionary-callout">
             <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>Cascading failure</strong> — One system failing triggers failures in others — like dominoes</p>
+            <p class="dictionary-item"><strong>Cascading failure</strong> — One system failing triggers failures in others, like dominoes</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="content-card" data-slide="23" id="slide-23">
+        <div class="card-inner">
+          <h2>The Fix for Difficult to Prevent Threats</h2>
+          <h3>Defence-in-Depth</h3>
+          <p>Even if an attacker exploits a zero-day vulnerability to gain initial access, you want multiple layers of
+            defence to contain and detect the breach.</p>
+          <ul>
+            <li><strong>Network segmentation</strong> limits how far an attacker can move once inside, containing the
+              blast radius of a breach.</li>
+            <li><strong>Application whitelisting</strong> ensures only approved software can execute, blocking malicious
+              payloads even if they bypass initial defences.</li>
+            <li><strong>Behavioural-based detection</strong> identifies suspicious activity by monitoring for anomalies
+              rather than relying on known attack signatures.</li>
+          </ul>
+          <h3>Air-Gap What Truly Matters</h3>
+          <p>For information that is truly secret, one of the most effective protections remains the simplest in
+            concept: <strong>air-gapping</strong>. A network that is physically isolated from the internet cannot be
+            remotely hacked, at least not through conventional means.</p>
+          <p>But air-gapped networks are costly to build and maintain. The starting point is a clear-eyed assessment:
+            <strong>what information is genuinely secret, and what is merely sensitive?</strong> Not everything warrants
+            the operational overhead of an air-gapped environment.</p>
+          <h3>Business Continuity Plans</h3>
+          <p><strong>Business Continuity Plans</strong> are not optional. Digital services need well-planned, regularly
+            rehearsed, <strong>non-digital service recovery procedures</strong>.</p>
+          <div class="dictionary-callout">
+            <p class="dictionary-title">📖 Dictionary</p>
+            <p class="dictionary-item"><strong>Defence-in-depth</strong> — A security strategy that layers multiple defences so that if one fails, others still protect the system</p>
+            <p class="dictionary-item"><strong>Air-gapping</strong> — Physically disconnecting a system from the internet so it can't be remotely compromised</p>
+            <p class="dictionary-item"><strong>Business continuity planning</strong> — Preparing in advance a set of actions, processes, and critical information that an organisation needs to continue operating during an unplanned event</p>
           </div>
         </div>
       </article>
 
       <article class="content-card takeaway-card" data-slide="25" id="slide-25">
         <div class="card-inner">
-          <h2>Takeaway #3: APT Attacks and Cloud Outages Are Difficult to Prevent</h2>
-          <p class="takeaway-text">These threats cannot be fully neutralised through technical controls alone:</p>
+          <h2>Takeaway #3: Some Disruptions are Beyond Our Control. How We Respond Matters More.</h2>
+          <p class="takeaway-text">We need to build our muscle for how we respond to the unexpected. Additionally, we need to:</p>
           <ul>
-            <li><strong>Air-gapped networks</strong> can reduce exposure for genuinely secret information, but they are
-              costly and must be used selectively.</li>
-            <li><strong>Business Continuity Plans</strong> are not optional. Critical systems need well-planned,
-              regularly rehearsed, <strong>non-digital service recovery procedures</strong>.</li>
+            <li><strong>Practice defence-in-depth</strong></li>
+            <li><strong>Air-gapped networks</strong> for genuinely secret information. Air-gapping is costly and must be
+              used selectively.</li>
+            <li><strong>Ensure all digital services have business continuity plans</strong></li>
           </ul>
-          <p>The goal is not to prevent the unpreventable. It is to ensure that when disruption arrives, the
-            organisation can continue operating.</p>
+          <p>The goal is not to prevent the unpreventable. It is to ensure that when disruption arrives, we
+            can continue operating.</p>
         </div>
       </article>
 
@@ -711,8 +722,11 @@
           <h3>Stick to Your Trade-offs</h3>
           <p>Many organisations start with strong security intent. But then the pressure mounts. Users
             complain. Stakeholders push for exceptions. Deadlines force shortcuts. Gradually, security measures get
-            loosened. The result is the worst of both worlds: <strong>neither a great user experience
+            loosened.</p>
+          <div class="example-callout">
+            <p>The result is the worst of both worlds: <strong>neither a great user experience
               nor strong security.</strong></p>
+          </div>
           <p>This happens when trade-offs are not made <strong>consciously and documented upfront</strong>.</p>
           <p>The fix is simple: make the trade-off, document the rationale, and commit. If circumstances
             change, revisit the decision deliberately, not reactively.</p>
@@ -750,15 +764,16 @@
         <div class="card-inner">
 
           <h2>Shift #2: From Compliance to Outcomes</h2>
-          <p>Too many senior leaders still treat cybersecurity as a <strong>compliance issue</strong> rather than a
-            <strong>strategic outcome</strong> to be achieved.</p>
-          <p>The shift requires moving from a checklist mentality to a <strong>risk-based, outcomes-driven
-              approach</strong>. Put simply: <strong>risk-based is deciding where to invest; outcomes-based is deciding
-              how to verify.</strong></p>
+          <p>Too many senior leaders still treat cybersecurity as a <strong>compliance issue</strong>. We need to move
+            from a checklist mentality to a <strong>risk-based, outcomes-driven approach</strong>.</p>
+          <div class="example-callout">
+            <p>Put simply: <strong>risk-based is deciding where to invest; outcomes-based is deciding how to
+              verify.</strong></p>
+          </div>
           <ol>
-            <li><strong>Understand the risk</strong>: what data or services does the system handle?</li>
-            <li><strong>Design mitigations</strong> based on identified risks, not from a template.</li>
-            <li><strong>Test for outcomes</strong>: do controls actually achieve their intended effect?</li>
+            <li><strong>Step 1: Understand the risk.</strong> What data or Government service does the system handle? What is at risk when there is a cyberattack?</li>
+            <li><strong>Step 2: Design mitigations</strong> based on identified risks, not from a template.</li>
+            <li><strong>Step 3: Test for outcomes.</strong> Ask, "do our security controls actually work when tested?"</li>
           </ol>
           <div class="dictionary-callout">
             <p class="dictionary-title">📖 Dictionary</p>
@@ -771,53 +786,39 @@
       <article class="content-card" data-slide="32" id="slide-32">
         <div class="card-inner">
           <h2>Shift #3: Assume Breach. Assume Fail.</h2>
-          <p>The third mindset shift is the most uncomfortable and perhaps the most important: <strong>plan for the
-              possibility that your defences have already been breached</strong>, and that your resilience measures will
-            eventually fail.</p>
-          <p><strong>"Assume breach. Assume fail."</strong> is a single operating principle: accept that no defence is
-            impenetrable and no system is infallible.</p>
-          <p>Traditional <strong>SOCs</strong> operate like castle guards, watching for known indicators. But if the
-            attacker is already inside the walls, guards at the gate will not find them.
-            <strong>Threat hunting</strong> operates on the assumption that a breach has already occurred,
-            proactively searching for intruders that automated detection has missed.</p>
-          <p>SOCs provide the baseline. Threat hunting provides the edge.</p>
-          <div class="dictionary-callout">
-            <p class="dictionary-title">📖 Dictionary</p>
-            <p class="dictionary-item"><strong>SOC (Security Operations Centre)</strong> — A team that monitors systems 24/7 for signs of attack</p>
-            <p class="dictionary-item"><strong>Threat hunting</strong> — Proactively searching for attackers already inside a network rather than waiting for alerts</p>
+          <p>The third mindset shift is perhaps the most uncomfortable.</p>
+          <div class="example-callout">
+            <p>Plan for the possibility that your defences have already been breached, and that your resilience measures
+              will eventually fail.</p>
           </div>
-        </div>
-      </article>
-
-      <article class="content-card" data-slide="33" id="slide-33">
-        <div class="card-inner">
-          <h2>The Restaurant That Never Closes</h2>
+          <p>Accept that no defence is impenetrable and no system is infallible.</p>
+          <h3>The Restaurant That Never Closes</h3>
           <p>How does "assume breach, assume fail" look like for resilience?</p>
           <p>Consider a restaurant. Preventing a kitchen fire requires fire-safe equipment and trained staff — that is
             the equivalent of cybersecurity controls. But if we assume things will go wrong, prevention is not enough.
             Fire alarms detect problems early. Sprinklers limit damage. A backup stove allows cooking to resume.
             These are the detection, response, and recovery capabilities that keep the restaurant operating even when
             prevention fails.</p>
-          <p>Critical government systems need the same layered approach. Critically, they also need
-            <strong>non-digital Business Continuity Plans</strong>. Printed procedures, offline documentation, and
-            regularly rehearsed recovery drills are the backbone of genuine resilience.</p>
+          <p>Government digital systems need the same layered approach.</p>
         </div>
       </article>
 
       <article class="content-card" data-slide="34" id="slide-34">
         <div class="card-inner">
           <h2>Summary</h2>
-          <p>Cybersecurity and resilience are not compliance exercises. They are strategic imperatives that require
-            conscious decisions, tested defences, and honest assessments of what can and cannot be prevented.</p>
-          <p><strong>Three categories of threats</strong> define the landscape: preventable, largely preventable, and
-            difficult to prevent.</p>
-          <p><strong>Three mindset shifts</strong> determine whether an organisation is truly prepared:</p>
+          <p><strong>1.</strong> Cybersecurity and resilience are strategic imperatives.</p>
+          <p><strong>2.</strong> These imperatives do not rest solely on IT teams. It is a shared
+            responsibility that spans every level of government leadership.</p>
+          <p><strong>3.</strong> Three categories of threats define the landscape: preventable, largely preventable, and
+            difficult to prevent. We need to make honest assessments of what can and cannot be prevented.</p>
+          <p><strong>4.</strong> Three mindset shifts determine whether an organisation is truly prepared:</p>
           <ol>
-            <li><strong>Make deliberate, upfront trade-offs</strong> and commit to them.</li>
-            <li><strong>Move from compliance to outcomes</strong>. Test whether defences work, not just whether they
-              exist.</li>
-            <li><strong>Assume breach, assume fail</strong>: build for the world where defences have been penetrated
-              and systems have gone down.</li>
+            <li><strong>Shift 1: Make deliberate, upfront trade-offs</strong> (cost, usability, and
+              security/resilience) and commit to them.</li>
+            <li><strong>Shift 2: Move from compliance to outcomes.</strong> Test whether defences work, not just
+              whether they exist.</li>
+            <li><strong>Shift 3: Assume breach, assume fail.</strong> Build for the world where defences have been
+              penetrated and your system is down. How will you ensure service continuity in such a scenario?</li>
           </ol>
           <p class="highlight-quote">Perfect security is impossible. Significant improvement is within reach.</p>
         </div>

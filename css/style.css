@@ -528,7 +528,7 @@ body {
   text-align: center;
   max-width: var(--content-max-width);
   margin: 0 auto 3rem;
-  padding: 4rem 0 2rem;
+  padding: 1rem 0;
 }
 
 .zone-label {
@@ -577,8 +577,9 @@ body {
 }
 
 .scroll-hint {
+  text-align: center;
   margin-top: 2rem;
-  color: var(--white-60);
+  color: #111;
   font-size: 0.9rem;
   animation: fadeInUp 1.5s var(--ease-smooth) 0.5s both;
 }
@@ -1023,11 +1024,123 @@ body {
   max-width: var(--content-max-width);
   margin: 0 auto 2rem;
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(30px) translateZ(0);
   transition: opacity 0.6s var(--ease-smooth), transform 0.6s var(--ease-smooth);
   position: relative;
   z-index: 20;
+  will-change: transform;
+  contain: layout style;
 }
+
+/* --- Card Breadcrumb Nav --- */
+.card-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-breadcrumb {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card-chapter {
+  color: #888;
+  font-weight: 500;
+  margin-right: 0.35rem;
+}
+
+.card-counter {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  background: #1B2B50;
+  padding: 0.2rem 0.65rem;
+  border-radius: 2rem;
+  letter-spacing: 0.03em;
+}
+
+/* --- Chapter Overview Label --- */
+.chapter-overview-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: #1B2B50;
+  padding: 0.22rem 0.75rem;
+  border-radius: 2rem;
+  margin: 0 !important;
+}
+
+
+.dictionary-callout {
+  background: #FFFDE7;
+  border-left: 3px solid #FFD700;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0 0;
+}
+
+.example-callout {
+  background: transparent;
+  border-left: 3px solid #333;
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.85rem 1.1rem;
+  margin: 1.25rem 0;
+}
+
+.dictionary-title {
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.07em !important;
+  text-transform: uppercase;
+  color: #8B6914 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dictionary-item {
+  font-size: 0.88rem !important;
+  color: #333 !important;
+  margin-bottom: 0.3rem !important;
+  line-height: 1.5 !important;
+}
+
+.dictionary-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* --- Section Overview List --- */
+.section-overview-list {
+  list-style: none;
+  margin: 0.75rem 0 0.75rem 0 !important;
+  padding: 0;
+}
+
+.section-overview-list li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  color: #222 !important;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.section-overview-list li:last-child {
+  border-bottom: none;
+}
+
+.section-overview-takeaway {
+  font-size: 0.88rem !important;
+  color: #8B6914 !important;
+  margin-top: 0.75rem !important;
+  font-style: italic;
+}
+
 
 .content-card.visible {
   opacity: 1;
@@ -1035,14 +1148,12 @@ body {
 }
 
 .card-inner {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 1rem;
   padding: 2rem;
   position: relative;
-  transition: all 0.3s var(--ease-smooth);
+  transition: background 0.3s var(--ease-smooth), border-color 0.3s var(--ease-smooth);
   -webkit-user-select: text;
   user-select: text;
   -webkit-touch-callout: default;
@@ -1059,6 +1170,15 @@ body {
   font-weight: 600;
   margin-bottom: 1rem;
   color: #111;
+}
+
+.content-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .content-card p {
@@ -1149,30 +1269,19 @@ body {
   margin: 1.5rem 0 !important;
 }
 
-/* --- Bioluminescent Glow (Twilight & Abyss) --- */
-.zone-twilight .content-card strong,
-.zone-abyss .content-card strong,
-.zone-seabed .content-card strong {
-  text-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
-}
 
-.zone-twilight .highlight-quote,
-.zone-abyss .highlight-quote,
-.zone-seabed .highlight-quote {
-  text-shadow: 0 0 8px rgba(79, 195, 247, 0.4);
-}
+
+
 
 /* Takeaway Cards */
 .takeaway-card .card-inner {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(255, 185, 0, 0.4);
-  border-width: 2px;
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .takeaway-text {
   font-size: 1.2rem !important;
   font-weight: 600;
-  color: #8B6914 !important;
+  color: #111 !important;
 }
 
 /* Exercise Cards */
@@ -1291,7 +1400,7 @@ body {
 /* --- Zone Transitions --- */
 .zone-transition {
   text-align: center;
-  padding: 4rem 0 2rem;
+  padding: 3rem 0;
   color: var(--white-40);
 }
 

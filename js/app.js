@@ -27,6 +27,7 @@
         updateQuestionCount();
         initDiveChooser();
         initAudioPlayer();
+        initBreadcrumbs();
 
         // Register service worker
         if ('serviceWorker' in navigator) {
@@ -763,6 +764,53 @@
             document.body.appendChild(iframe);
             iframe.src = url;
             setTimeout(() => iframe.remove(), 5000);
+        });
+    }
+
+    // --- Card Breadcrumbs & Counter ---
+    function initBreadcrumbs() {
+        const CARD_BREADCRUMBS = {
+            2:  { section: 'Introduction', chapter: 1, index: 1, total: 4 },
+            3:  { section: 'Introduction', chapter: 1, index: 2, total: 4 },
+            4:  { section: 'Introduction', chapter: 1, index: 3, total: 4 },
+            5:  { section: 'Introduction', chapter: 1, index: 4, total: 4 },
+            7:  { section: 'Preventable Threats', chapter: 2, index: 1, total: 4 },
+            9:  { section: 'Preventable Threats', chapter: 2, index: 2, total: 4 },
+            10: { section: 'Preventable Threats', chapter: 2, index: 3, total: 4 },
+            11: { section: 'Preventable Threats', chapter: 2, index: 4, total: 4 },
+            13: { section: 'Largely Preventable', chapter: 3, index: 1, total: 4 },
+            14: { section: 'Largely Preventable', chapter: 3, index: 2, total: 4 },
+            15: { section: 'Largely Preventable', chapter: 3, index: 3, total: 4 },
+            17: { section: 'Largely Preventable', chapter: 3, index: 4, total: 4 },
+            19: { section: 'Difficult to Prevent', chapter: 4, index: 1, total: 6 },
+            21: { section: 'Difficult to Prevent', chapter: 4, index: 2, total: 6 },
+            22: { section: 'Difficult to Prevent', chapter: 4, index: 3, total: 6 },
+            23: { section: 'Difficult to Prevent', chapter: 4, index: 4, total: 6 },
+            24: { section: 'Difficult to Prevent', chapter: 4, index: 5, total: 6 },
+            25: { section: 'Difficult to Prevent', chapter: 4, index: 6, total: 6 },
+            27: { section: 'Mindset Shifts', chapter: 5, index: 1, total: 6 },
+            29: { section: 'Mindset Shifts', chapter: 5, index: 2, total: 6 },
+            30: { section: 'Mindset Shifts', chapter: 5, index: 3, total: 6 },
+            31: { section: 'Mindset Shifts', chapter: 5, index: 4, total: 6 },
+            32: { section: 'Mindset Shifts', chapter: 5, index: 5, total: 6 },
+            33: { section: 'Mindset Shifts', chapter: 5, index: 6, total: 6 },
+        };
+
+        document.querySelectorAll('.content-card[data-slide]').forEach(card => {
+            const slideNum = parseInt(card.dataset.slide);
+            const crumb = CARD_BREADCRUMBS[slideNum];
+            if (!crumb) return;
+
+            const cardInner = card.querySelector('.card-inner');
+            if (!cardInner) return;
+
+            const nav = document.createElement('div');
+            nav.className = 'card-nav';
+            nav.innerHTML = `
+                <span class="card-breadcrumb"><span class="card-chapter">Ch ${crumb.chapter} / 5 ·</span> ${crumb.section}</span>
+                <span class="card-counter">${crumb.index} / ${crumb.total}</span>
+            `;
+            cardInner.insertBefore(nav, cardInner.firstChild);
         });
     }
 

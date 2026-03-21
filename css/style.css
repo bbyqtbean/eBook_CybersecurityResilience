@@ -55,6 +55,7 @@ body {
   font-family: var(--font-body);
   background: var(--abyss);
   color: var(--white);
+  font-size: 1.3rem;
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -532,7 +533,7 @@ body {
 }
 
 .zone-label {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -1088,7 +1089,7 @@ body {
 }
 
 .card-breadcrumb {
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #111;
   letter-spacing: 0.06em;
@@ -1102,7 +1103,7 @@ body {
 }
 
 .card-counter {
-  font-size: 0.72rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #fff;
   background: #1B2B50;
@@ -1113,7 +1114,7 @@ body {
 
 /* --- Chapter Overview Label --- */
 .chapter-overview-label {
-  font-size: 0.7rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #fff;
@@ -1141,7 +1142,7 @@ body {
 }
 
 .dictionary-title {
-  font-size: 0.7rem !important;
+  font-size: 1.3rem !important;
   font-weight: 700 !important;
   letter-spacing: 0.07em !important;
   text-transform: uppercase;
@@ -1150,7 +1151,7 @@ body {
 }
 
 .dictionary-item {
-  font-size: 0.88rem !important;
+  font-size: 1.3rem !important;
   color: #333 !important;
   margin-bottom: 0.3rem !important;
   line-height: 1.5 !important;
@@ -1219,7 +1220,7 @@ body {
 
 .content-card h3 {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #111;
   margin-top: 1.5rem;
@@ -1468,7 +1469,7 @@ body {
 }
 
 .transition-text {
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-style: italic;
   letter-spacing: 0.05em;
 }

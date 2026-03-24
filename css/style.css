@@ -1096,6 +1096,15 @@ body {
 }
 
 .card-breadcrumb {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-counter {
+  flex-shrink: 0;
+}
+
+.card-breadcrumb {
   font-size: 1.3rem;
   font-weight: 600;
   color: #111;
@@ -2164,9 +2173,10 @@ body {
   }
 
   .card-nav {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
-    gap: 0.4rem;
+    gap: 0.75rem;
   }
 
   .audio-indicator {

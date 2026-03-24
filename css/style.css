@@ -2173,10 +2173,10 @@ body {
   }
 
   .card-nav {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0.75rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
   }
 
   .audio-indicator {

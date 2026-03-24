@@ -60,11 +60,12 @@
 |---------|------|------|--------|
 | Depth label ("Depth:") | `1.3rem` | Inter | *"Depth: 0m (Introduction)"* |
 | Section menu links | `1.3rem` | Inter | *"🏖️ 0m — Introduction"* |
-| Dropdown caret | `0.6rem` | Inter | *"▼"* |
-| Drawer title | `1.3rem` | Playfair Display | *"Your Questions"*, *"Your Bookmarks"* |
+| Dropdown caret | `1.3rem` | Inter | *"▼"* |
+| Drawer title | `2rem` | Playfair Display | *"Your Questions"*, *"Your Bookmarks"* |
 | Drawer close button | `2rem` | Inter | *"×"* |
 | Bookmark section label | `1.3rem` | Inter | *"The Abyss · 100m — Slide 34"* |
 | Bookmark title | `1.3rem` | Inter | *"DDoS Attacks"* |
 | Bookmark note text | `1.3rem` | Inter | *"kkkk"* |
 | Bookmark slide ref | `1.3rem` | Inter | *"Slide 12"* |
-| Bookmark delete button | `1.3rem` | Inter | *"×"* |
+| Bookmark delete button | `2rem` | Inter | *"×"* |
+| Question hint text | `1.3rem` | Inter | *"Your questions will be collated and sent to your Trainer"* |

@@ -1154,7 +1154,7 @@ body {
 }
 
 .dictionary-title {
-  font-size: 1.3rem !important;
+  font-size: 1.3rem;
   font-weight: 700 !important;
   letter-spacing: 0.07em !important;
   text-transform: uppercase;
@@ -1163,7 +1163,7 @@ body {
 }
 
 .dictionary-item {
-  font-size: 1.3rem !important;
+  font-size: 1.3rem;
   color: #333 !important;
   margin-bottom: 0.3rem !important;
   line-height: 1.5 !important;

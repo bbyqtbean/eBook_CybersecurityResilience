@@ -155,7 +155,7 @@ body {
   padding: 0.65rem 1rem;
   color: var(--white-80);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   transition: background 0.15s ease, color 0.15s ease;
 }
 
@@ -170,7 +170,7 @@ body {
 }
 
 .top-bar-left .depth-label {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--white-60);
   letter-spacing: 0.05em;
@@ -334,7 +334,7 @@ body {
   background: none;
   border: none;
   color: var(--white-60);
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   padding: 0.25rem;
   transition: color 0.2s;
@@ -392,7 +392,7 @@ body {
 }
 
 .bookmark-item-section {
-  font-size: 0.75rem;
+  font-size: 1.3rem;
   color: var(--surface);
   font-weight: 500;
 }
@@ -402,7 +402,7 @@ body {
   border: none;
   color: var(--white-40);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   padding: 0.2rem;
   transition: color 0.2s;
 }
@@ -412,19 +412,19 @@ body {
 }
 
 .bookmark-item-note {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   color: var(--white-80);
   line-height: 1.5;
 }
 
 .bookmark-item-slide {
-  font-size: 0.7rem;
+  font-size: 1.3rem;
   color: var(--white-40);
   margin-top: 0.4rem;
 }
 
 .bookmark-item-title {
-  font-size: 0.85rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--white);
   margin-bottom: 0.25rem;
@@ -540,7 +540,7 @@ body {
 }
 
 .zone-label {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
@@ -561,7 +561,7 @@ body {
 }
 
 .zone-subtitle {
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-size: clamp(1.3rem, 5vw, 2rem);
   color: var(--deep-navy);
   font-weight: 400;
   text-align: center;
@@ -619,7 +619,7 @@ body {
 }
 
 .onboarding-step-label {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -633,7 +633,7 @@ body {
   text-align: center;
   margin-top: 2rem;
   color: #111;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   animation: fadeInUp 1.5s var(--ease-smooth) 0.5s both;
 }
 
@@ -714,13 +714,13 @@ body {
 
 .dive-chooser-title {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #000;
   margin-bottom: 0.25rem;
 }
 
 .dive-chooser-subtitle {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #000;
   margin-bottom: 1.5rem;
 }
@@ -777,7 +777,7 @@ body {
 }
 
 .dive-option-desc {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #000;
   line-height: 1.4;
 }
@@ -910,13 +910,13 @@ body {
 
 .onboarding-tip .tip-title {
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 1.75rem;
   margin-bottom: 0.35rem;
   color: #1B2B50;
 }
 
 .onboarding-tip .tip-desc {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   color: #2c4a6e;
   line-height: 1.4;
 }
@@ -1096,7 +1096,7 @@ body {
 }
 
 .card-breadcrumb {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #111;
   letter-spacing: 0.06em;
@@ -1110,18 +1110,22 @@ body {
 }
 
 .card-counter {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
   background: #1B2B50;
   padding: 0.2rem 0.65rem;
   border-radius: 2rem;
   letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* --- Chapter Overview Label --- */
 .chapter-overview-label {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #fff;
@@ -1146,6 +1150,7 @@ body {
   border-radius: 0 0.5rem 0.5rem 0;
   padding: 0.85rem 1.1rem;
   margin: 1.25rem 0;
+  font-size: 1.5rem;
 }
 
 .dictionary-title {
@@ -1219,7 +1224,7 @@ body {
 
 .content-card h2 {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #111;
@@ -1249,7 +1254,7 @@ body {
 .content-card ol {
   margin: 0.75rem 0 1rem 1.5rem;
   color: #222;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .content-card li {
@@ -1476,7 +1481,7 @@ body {
 }
 
 .transition-text {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-style: italic;
   letter-spacing: 0.05em;
 }
@@ -2146,9 +2151,6 @@ body {
     padding: 1.5rem;
   }
 
-  .content-card h2 {
-    font-size: 1.5rem;
-  }
 
 
   .sharepoint-card {
@@ -2191,17 +2193,6 @@ body {
     padding: 1.5rem;
   }
 
-  .card-breadcrumb {
-    font-size: 0.75rem;
-  }
-
-  .card-counter {
-    font-size: 0.75rem;
-  }
-
-  .chapter-overview-label {
-    font-size: 0.75rem;
-  }
 
 }
 

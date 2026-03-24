@@ -2161,6 +2161,12 @@ body {
     text-align: center;
   }
 
+  .card-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
   .audio-indicator {
     right: auto;
     left: 50%;
@@ -2202,11 +2208,6 @@ body {
     font-size: 0.75rem;
   }
 
-  .card-nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
-  }
 }
 
 /* --- Mask Vignette (Scuba POV) --- */

@@ -532,6 +532,13 @@ body {
   padding: 1rem 0;
 }
 
+.chapter-intro-header {
+  text-align: center;
+  max-width: var(--content-max-width);
+  margin: 2rem auto;
+  padding: 1rem 0;
+}
+
 .zone-label {
   font-size: 1rem;
   font-weight: 600;
@@ -2119,16 +2126,20 @@ body {
 
   #depth-gauge {
     position: fixed;
-    right: 0.75rem;
-    top: auto;
-    bottom: 1rem;
-    transform: none;
-    height: 25vh;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40vh;
     z-index: 90;
+    padding-right: 0.25rem;
   }
 
   .gauge-labels {
     display: none;
+  }
+
+  .depth-zone {
+    padding-right: 2.5rem;
   }
 
   .card-inner {
@@ -2177,6 +2188,24 @@ body {
 
   .popup-inner {
     padding: 1.5rem;
+  }
+
+  .card-breadcrumb {
+    font-size: 0.75rem;
+  }
+
+  .card-counter {
+    font-size: 0.75rem;
+  }
+
+  .chapter-overview-label {
+    font-size: 0.75rem;
+  }
+
+  .card-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
   }
 }
 

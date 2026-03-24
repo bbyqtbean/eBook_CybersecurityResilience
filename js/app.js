@@ -682,6 +682,12 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+                // Update active highlight + depth display immediately on click
+                const clickedZone = link.dataset.zone;
+                if (clickedZone) {
+                    const syntheticEl = { dataset: { zone: clickedZone } };
+                    updateDepthGauge(syntheticEl);
+                }
                 menu.classList.remove('open');
                 menu.setAttribute('aria-hidden', 'true');
                 if (caret) caret.classList.remove('open');

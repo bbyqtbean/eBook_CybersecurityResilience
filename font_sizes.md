@@ -68,4 +68,4 @@
 | Bookmark note text | `1.3rem` | Inter | *"kkkk"* |
 | Bookmark slide ref | `1.3rem` | Inter | *"Slide 12"* |
 | Bookmark delete button | `2rem` | Inter | *"×"* |
-| Question hint text | `1.3rem` | Inter | *"Your questions will be collated and sent to your Trainer"* |
+| Question hint text | `1.3rem` | Playfair Display | *"Your questions will be collated and sent to your Trainer"* |

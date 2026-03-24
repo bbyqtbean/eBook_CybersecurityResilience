@@ -1990,6 +1990,7 @@ body {
 
 .question-hint {
   font-size: 1.3rem;
+  font-family: var(--font-heading);
   color: var(--white-40);
   text-align: center;
   margin-bottom: 1rem;

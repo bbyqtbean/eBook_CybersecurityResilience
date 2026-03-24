@@ -1475,6 +1475,10 @@ body {
   margin-top: 1rem !important;
 }
 
+.transition-bridge-card .card-nav {
+  display: none !important;
+}
+
 .fish-group {
   font-size: 2rem;
   margin-bottom: 1rem;

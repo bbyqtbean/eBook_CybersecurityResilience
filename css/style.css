@@ -1462,6 +1462,10 @@ body {
   color: var(--white-40);
 }
 
+.transition-bridge-card {
+  margin-top: 1rem !important;
+}
+
 .fish-group {
   font-size: 2rem;
   margin-bottom: 1rem;

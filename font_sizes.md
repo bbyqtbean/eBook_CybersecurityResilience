@@ -12,11 +12,12 @@
 | Body text | `1.3rem` | Inter | *"Cybersecurity and resilience are strategic imperatives."* |
 | Card paragraphs | `1.3rem` | Inter | *"The good news: defending against DDoS is neither expensive nor complex."* |
 | Card ul/ol lists | `1.3rem` | Inter | *"• DDoS Protection Services, typically bundled with CDNs…"* |
+| Takeaway card summary text | `1.3rem` | Inter | *"Unlike Tier 1 incidents (preventable), these threats cannot be prevented..."* |
 | Example callout (black line) | `1.5rem` | Inter | *"A certificate expired silently. No alert was sent."* |
 | Dictionary callout (gold line) | `1.3rem` | Inter | *"📖 Dive Deeper: Key Terms"* |
 | Dictionary title | `1.3rem` | Inter | *"CDN"* |
 | Dictionary entries | `1.3rem` | Inter | *"A network of servers spread across the globe…"* |
-| Section overview list | `1.3rem` | Inter | *"A. Accountability Is Layered — different responsibilities…"* |
+| Section overview list | `1.3rem` | Inter | *"Assign Accountability At Every Level — different responsibilities…"* |
 | Section overview takeaway | `1.3rem` | Inter | *"Key takeaway: resilience is a shared responsibility."* |
 | Onboarding tip titles | `1.75rem` | Inter | *"Drop a Bookmark Anchor"* |
 | Onboarding tip descriptions | `1.5rem` | Inter | *"Tap any card to bookmark it with a note."* |

@@ -2150,11 +2150,6 @@ body {
     font-size: 1.5rem;
   }
 
-  .content-card p,
-  .content-card ul,
-  .content-card ol {
-    font-size: 1.05rem;
-  }
 
   .sharepoint-card {
     flex-direction: column;

@@ -298,7 +298,7 @@
             BookmarkManager.add(pendingBookmark);
             popup.classList.remove('visible');
             pendingBookmark = null;
-            showBubbleBurst();
+
         });
 
         cancelBtn.addEventListener('click', () => {
@@ -503,23 +503,7 @@
         return div.innerHTML;
     }
 
-    // --- Bubble Burst Effect ---
-    function showBubbleBurst() {
-        const container = document.getElementById('bubbles-container');
-        if (!container) return;
-        for (let i = 0; i < 8; i++) {
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            const size = Math.random() * 10 + 5;
-            bubble.style.width = size + 'px';
-            bubble.style.height = size + 'px';
-            bubble.style.left = (40 + Math.random() * 20) + '%';
-            bubble.style.bottom = '40%';
-            bubble.style.animationDuration = (Math.random() * 2 + 1) + 's';
-            container.appendChild(bubble);
-            bubble.addEventListener('animationend', () => bubble.remove());
-        }
-    }
+
 
     // --- Drawer ---
     function initDrawer() {

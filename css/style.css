@@ -431,46 +431,7 @@ body {
 }
 
 /* --- Bubbles --- */
-.bubbles-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 15;
-  pointer-events: none;
-  overflow: hidden;
-}
 
-.bubble {
-  position: absolute;
-  bottom: -20px;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  animation: rise linear infinite;
-  opacity: 0;
-}
-
-@keyframes rise {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 0.8;
-  }
-
-  90% {
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: translateY(-100vh) scale(0.5);
-    opacity: 0;
-  }
-}
 
 /* --- Depth Zone Backgrounds --- */
 .depth-zone {
@@ -2245,35 +2206,6 @@ body {
   filter: url(#gold-glow) drop-shadow(0 0 10px rgba(255, 215, 0, 1.0)) drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
 }
 
-/* --- Marine Snow Particle (deep zone fallback) --- */
-.marine-snow {
-  position: absolute;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.15));
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  animation: drift linear infinite;
-  opacity: 0;
-}
-
-@keyframes drift {
-  0% {
-    transform: translate(0, 0);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 0.5;
-  }
-
-  90% {
-    opacity: 0.3;
-  }
-
-  100% {
-    transform: translate(30px, 100vh);
-    opacity: 0;
-  }
-}
 
 /* --- Watercolor Hierarchy: Scroll-Reveal Ocean --- */
 .hierarchy-card {

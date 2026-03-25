@@ -14,7 +14,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         BookmarkManager.init();
         HighlightManager.init();
-        initBubbles();
+
         initScrollObservers();
         initBookmarkInteractions();
         initDrawer();
@@ -166,70 +166,7 @@
     }
 
     // --- Depth-Aware Particles ---
-    function initBubbles() {
-        const container = document.getElementById('bubbles-container');
-        if (!container) return;
 
-        // Depth zone config for particles
-        const PARTICLE_ZONES = {
-            surface: { type: 'bubble', sizeMin: 6, sizeMax: 14, speed: [4, 8], direction: 'up', brightness: 0.4 },
-            shallows: { type: 'bubble', sizeMin: 5, sizeMax: 12, speed: [6, 10], direction: 'up', brightness: 0.3 },
-            reef: { type: 'bubble', sizeMin: 3, sizeMax: 8, speed: [8, 14], direction: 'drift', brightness: 0.15 },
-            twilight: { type: 'snow', sizeMin: 2, sizeMax: 5, speed: [12, 20], direction: 'down', brightness: 0.1 },
-            abyss: { type: 'snow', sizeMin: 2, sizeMax: 5, speed: [15, 25], direction: 'down', brightness: 0.08 },
-            seabed: { type: 'snow', sizeMin: 2, sizeMax: 4, speed: [18, 30], direction: 'down', brightness: 0.06 }
-        };
-
-        function getCurrentZone() {
-            const scrollY = window.scrollY + window.innerHeight / 2;
-            const zones = document.querySelectorAll('.depth-zone');
-            let current = 'surface';
-            zones.forEach(z => {
-                if (scrollY >= z.offsetTop) current = z.dataset.zone;
-            });
-            return current;
-        }
-
-        const MAX_PARTICLES = 8;
-
-        function createParticle() {
-            // Cap particle count across all zones
-            if (container.children.length >= MAX_PARTICLES) return;
-
-            const zone = getCurrentZone();
-            const config = PARTICLE_ZONES[zone] || PARTICLE_ZONES.surface;
-            const particle = document.createElement('div');
-            const size = Math.random() * (config.sizeMax - config.sizeMin) + config.sizeMin;
-
-            if (config.type === 'snow') {
-                particle.className = 'marine-snow';
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = '-5px';
-                const duration = Math.random() * (config.speed[1] - config.speed[0]) + config.speed[0];
-                particle.style.animationDuration = duration + 's';
-                particle.style.animationDelay = (Math.random() * 3) + 's';
-            } else {
-                particle.className = 'bubble';
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                const duration = Math.random() * (config.speed[1] - config.speed[0]) + config.speed[0];
-                particle.style.animationDuration = duration + 's';
-                particle.style.animationDelay = (Math.random() * 3) + 's';
-            }
-
-            container.appendChild(particle);
-            particle.addEventListener('animationend', () => particle.remove());
-        }
-
-        // Initial burst (up to cap)
-        for (let i = 0; i < MAX_PARTICLES; i++) {
-            setTimeout(createParticle, i * 300);
-        }
-        setInterval(createParticle, 800);
-    }
 
     // --- Scroll Observers ---
     function initScrollObservers() {

@@ -1856,7 +1856,7 @@ body {
 
 /* Android-only: centered to avoid native context menu overlap */
 .selection-toolbar--android {
-  top: 50% !important;
+  top: 60% !important;
   left: 50%;
   transform: translate(-50%, -50%);
 }

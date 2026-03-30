@@ -67,8 +67,8 @@ const HighlightManager = {
         if (highlights.length === 0) return '';
 
         return highlights.map(h => {
-            const zone = getZoneLabelForSlide(h.slideNum);
-            return `[${zone} — Slide ${h.slideNum}]\nHighlighted: "${h.selectedText}"\nQuestion: ${h.question}`;
+            const chapter = getChapterForSlide(h.slideNum);
+            return `[${chapter}]\nHighlighted: "${h.selectedText}"\nQuestion: ${h.question}`;
         }).join('\n\n---\n\n');
     },
 

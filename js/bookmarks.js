@@ -109,7 +109,8 @@ const BookmarkManager = {
         if (bookmarks.length === 0) return '';
 
         return bookmarks.map(b => {
-            const lines = [`[${b.zoneLabel || 'Unknown'} — Slide ${b.slideNum}]`];
+            const chapter = getChapterForSlide(b.slideNum);
+            const lines = [`[${chapter}]`];
             if (b.cardTitle) lines.push(`Card: ${b.cardTitle}`);
             if (b.note) lines.push(`Note: ${b.note}`);
             return lines.join('\n');

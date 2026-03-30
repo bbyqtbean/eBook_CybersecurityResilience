@@ -1854,6 +1854,14 @@ body {
   display: flex;
 }
 
+/* Android-only: fixed bottom bar to avoid native context menu overlap */
+.selection-toolbar--android {
+  bottom: 1.5rem;
+  left: 50%;
+  top: auto !important;
+  transform: translateX(-50%);
+}
+
 .selection-toolbar-btn {
   display: flex;
   align-items: center;

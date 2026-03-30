@@ -359,14 +359,21 @@
                 selectedText = text;
                 selectedSlideNum = parseInt(card.dataset.slide);
 
-                // Position toolbar near selection
-                const range = sel.getRangeAt(0);
-                const rect = range.getBoundingClientRect();
-                toolbar.style.top = Math.max(10, rect.top - 50) + 'px';
-                toolbar.style.left = Math.min(
-                    window.innerWidth - 200,
-                    Math.max(10, rect.left + rect.width / 2 - 80)
-                ) + 'px';
+                const isAndroid = /android/i.test(navigator.userAgent);
+                if (isAndroid) {
+                    // Android: use fixed bottom bar to avoid native context menu overlap
+                    toolbar.classList.add('selection-toolbar--android');
+                } else {
+                    // Other platforms: position near selection
+                    toolbar.classList.remove('selection-toolbar--android');
+                    const range = sel.getRangeAt(0);
+                    const rect = range.getBoundingClientRect();
+                    toolbar.style.top = Math.max(10, rect.top - 50) + 'px';
+                    toolbar.style.left = Math.min(
+                        window.innerWidth - 200,
+                        Math.max(10, rect.left + rect.width / 2 - 80)
+                    ) + 'px';
+                }
                 toolbar.classList.add('visible');
             }, 10);
         }

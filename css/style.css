@@ -1854,12 +1854,11 @@ body {
   display: flex;
 }
 
-/* Android-only: fixed bottom bar to avoid native context menu overlap */
+/* Android-only: centered to avoid native context menu overlap */
 .selection-toolbar--android {
-  bottom: 1.5rem;
+  top: 50% !important;
   left: 50%;
-  top: auto !important;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .selection-toolbar-btn {

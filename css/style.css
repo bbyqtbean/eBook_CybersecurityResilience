@@ -424,7 +424,7 @@ body {
 }
 
 .bookmark-item-title {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--white);
   margin-bottom: 0.25rem;
@@ -1532,7 +1532,7 @@ body {
 }
 
 .reflection-bookmark-item .section-label {
-  font-size: 0.75rem;
+  font-size: 1.3rem;
   color: var(--surface);
   font-weight: 500;
   margin-bottom: 0.25rem;
@@ -1540,7 +1540,7 @@ body {
 
 .reflection-bookmark-item .note-text {
   color: var(--white-80);
-  font-size: 0.9rem;
+  font-size: 1.3rem;
 }
 
 /* --- Completion --- */
@@ -2083,14 +2083,14 @@ body {
 }
 
 .question-summary-item .section-label {
-  font-size: 0.75rem;
+  font-size: 1.3rem;
   color: var(--gold);
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
 .question-summary-item .selected-text {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   color: var(--white-60);
   font-style: italic;
   margin-bottom: 0.25rem;
@@ -2098,7 +2098,7 @@ body {
 
 .question-summary-item .question-text {
   color: var(--white-80);
-  font-size: 0.9rem;
+  font-size: 1.3rem;
 }
 
 /* --- Footer --- */

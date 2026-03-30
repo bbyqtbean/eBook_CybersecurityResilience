@@ -1993,8 +1993,8 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  background: rgba(255, 215, 0, 0.06);
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  background: rgba(79, 195, 247, 0.08);
+  border: 1px solid rgba(79, 195, 247, 0.2);
   border-radius: 0.6rem;
   padding: 0.6rem 0.8rem;
   margin-top: 0.75rem;
@@ -2003,7 +2003,7 @@ body {
 }
 
 .highlight-indicator:hover {
-  background: rgba(255, 215, 0, 0.1);
+  background: rgba(79, 195, 247, 0.12);
 }
 
 .highlight-badge {
@@ -2019,8 +2019,8 @@ body {
 
 .highlight-text {
   display: block;
-  font-size: 0.8rem;
-  color: var(--gold-soft);
+  font-size: 1.3rem;
+  color: #555;
   font-style: italic;
   line-height: 1.4;
   margin-bottom: 0.25rem;
@@ -2028,8 +2028,8 @@ body {
 
 .highlight-question {
   display: block;
-  font-size: 0.8rem;
-  color: var(--white-80);
+  font-size: 1.3rem;
+  color: #1a1a1a;
   line-height: 1.4;
 }
 

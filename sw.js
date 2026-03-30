@@ -2,7 +2,7 @@
    Service Worker — Offline Caching
    ============================================ */
 
-const CACHE_NAME = 'deep-dive-v14';
+const CACHE_NAME = 'deep-dive-v15';
 const ASSETS = [
     './',
     './index.html',
@@ -32,7 +32,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch: cache-first for assets, network-first for others
+// Fetch: stale-while-revalidate — serve cache instantly, update in background
 self.addEventListener('fetch', (event) => {
     // Skip non-GET requests and Google Forms submissions
     if (event.request.method !== 'GET') return;
@@ -43,21 +43,19 @@ self.addEventListener('fetch', (event) => {
     if (url.endsWith('.mp4') || url.endsWith('.m4a') || url.endsWith('.webm') || url.endsWith('.ogg')) return;
 
     event.respondWith(
-        caches.match(event.request).then(cached => {
-            if (cached) return cached;
-            return fetch(event.request).then(response => {
-                // Cache successful responses
-                if (response.ok) {
-                    const clone = response.clone();
-                    caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-                }
-                return response;
-            }).catch(() => {
-                // Offline fallback
-                if (event.request.mode === 'navigate') {
-                    return caches.match('/index.html');
-                }
-            });
-        })
+        caches.open(CACHE_NAME).then(cache =>
+            cache.match(event.request).then(cached => {
+                // Always fetch fresh copy in background
+                const fetchPromise = fetch(event.request).then(response => {
+                    if (response.ok) {
+                        cache.put(event.request, response.clone());
+                    }
+                    return response;
+                }).catch(() => cached);
+
+                // Return cached immediately, or wait for network
+                return cached || fetchPromise;
+            })
+        )
     );
 });

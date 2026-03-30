@@ -7,8 +7,8 @@
 
     // --- Google Form Config ---
     const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScYeD-ogN23Bv2nMqwuGHftnPEfFtYsI6yAAGanAkwwxoSDjw/formResponse';
-    // Learner Questions field — update this ID once you get the pre-filled link
     const QUESTIONS_FIELD_ID = 'entry.664812276';
+    const BOOKMARKS_FIELD_ID = 'entry.196705044';
 
     // --- Init ---
     document.addEventListener('DOMContentLoaded', () => {
@@ -661,20 +661,24 @@
 
         btn.addEventListener('click', () => {
             const questions = HighlightManager.formatForSubmission();
+            const bookmarks = BookmarkManager.formatForSubmission();
 
             // Submit to Google Form
-            submitToGoogleForm(questions);
+            submitToGoogleForm(questions, bookmarks);
 
             btn.hidden = true;
             confirmation.hidden = false;
         });
     }
 
-    function submitToGoogleForm(questions) {
+    function submitToGoogleForm(questions, bookmarks) {
         // Build form data
         const formData = new FormData();
         if (questions) {
             formData.append(QUESTIONS_FIELD_ID, questions);
+        }
+        if (bookmarks) {
+            formData.append(BOOKMARKS_FIELD_ID, bookmarks);
         }
 
         // Use fetch with no-cors mode — we don't need to read the response
@@ -684,7 +688,10 @@
             body: formData
         }).catch(() => {
             // Fallback: iframe approach
-            const url = `${GOOGLE_FORM_URL}?${questions ? QUESTIONS_FIELD_ID + '=' + encodeURIComponent(questions.substring(0, 1500)) : ''}`;
+            const params = [];
+            if (questions) params.push(QUESTIONS_FIELD_ID + '=' + encodeURIComponent(questions.substring(0, 1500)));
+            if (bookmarks) params.push(BOOKMARKS_FIELD_ID + '=' + encodeURIComponent(bookmarks.substring(0, 1500)));
+            const url = `${GOOGLE_FORM_URL}?${params.join('&')}`;
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.name = 'form-submit-' + Date.now();
